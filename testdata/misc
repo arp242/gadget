@@ -1,0 +1,56 @@
+# vim:ts=18
+#
+# Some random stuff that didn't work and needed fixing.
+#
+
+# Few IE strings that gave me problems.
+Internet Explorer 10	Windows 7	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)
+Internet Explorer 10	Windows 7	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/4.0; InfoPath.2; SV1; .NET CLR 2.0.50727; WOW64)
+Internet Explorer 10	Windows 7	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)
+Internet Explorer 10	Windows Phone 8	Mozilla/5.0 (compatible; MSIE 10.0; Windows Phone 8.0; Trident/6.0; IEMobile/10.0; ARM; Touch; NOKIA; Lumia 925)
+
+# Opera Mini; because it uses a compression proxy it behaves different than
+# regular Opera, so worth listing separately.
+Opera 12.16	Linux	Opera/9.80 (X11; Linux zvav; U; en) Presto/2.12.423 Version/12.16
+Opera 12.18	Windows 8	Opera/9.80 (Windows NT 6.2; Win64; x64) Presto/2.12.388 Version/12.18
+Opera 9.64	Windows Vista	Opera/9.64 (Windows NT 6.0; U; zh-cn) Presto/2.1.1
+Opera 9.64	macOS	Opera/9.64 (Macintosh; Intel Mac OS X; U; en) Presto 2.1.1
+Opera Mini 12.16		Opera/9.80 (J2ME/MIDP; Opera Mini/4.1.15231/170.58; U; en) Presto/2.12.423 Version/12.16
+Opera Mini 12.16	Android	Opera/9.80 (Android; Opera Mini/47.0.2254/170.58; U; az) Presto/2.12.423 Version/12.16
+Opera Mini 12.16	Android	Opera/9.80 (Android; Opera Mini/7.6.40234/170.58; U; ru) Presto/2.12.423 Version/12.16
+Opera Mini 12.16	Windows Phone	Opera/9.80 (Windows Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 Version/12.16
+Opera Mini 12.16	Windows Phone	Opera/9.80 (Windows Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 Version/12.16
+
+# Wrapped in quotes.
+Chrome 62	Linux	'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chromium/62.0.3202.94 Safari/537.36'
+		'Mozilla/5.0 (compatible; DuckDuckBot-Https/1.1; https://duckduckgo.com/duckduckbot)'
+Chrome 99999	Linux	'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99999.0.3578.98 Safari/537.36'
+
+# "Mozzila" misspelled.
+Chrome 30	Android 4.4	Mozzila/5.0(Linux; Android 4.4.2; ru-ru; Fly IQ4415 Quad Build/KOT49H) AppleWebKit/537.36(KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0 Mobile Safari/537.36;
+Chrome 30	Android 4.4	Mozzila/5.0(Mozilla/5.0 (Linux; Android 4.4.2;Oysters Arctic450 Build/KOT49H) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/30.0.0.0  Mobile Safari/537.36
+
+# No spaces; can't really do that much here.
+Safari	iOS 5.1	Mozilla/5.0 (iPad;U;CPU OS 5_1_1 like Mac OS X; zh-cn)AppleWebKit/534.46.0(KHTML, like Gecko)CriOS/19.0.1084.60 Mobile/9B206 Safari/7534.48.3
+
+# Version is not a number.
+Chrome	Android 8.1	Mozilla/5.0 (Linux; Android 8.1.0) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/FreeBrowser Mobile Safari/537.36 FreeBrowser/325
+
+# AppleWebKit is wrapped in ( .. ). Who knows why, but this is really rare so whatever.
+HUAWEI_P7-L07_TD 5.0	Android 4.4	HUAWEI_P7-L07_TD/5.0 Android/4.4.2 (Linux; U; Android 4.4.2; zh-cn) Release/01.18.2014 Browser/WAP2.0 (AppleWebKit/537.36) Mobile Safari/537.36
+
+# Uses a , instead of a ; – Just don't deal with this as it's really rare.
+Internet Explorer 11		Mozilla/5.0 (compatible, MSIE 11, Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko
+
+# Android apears first, so we never see "Trident/". It's okay, as this is not
+# too common, and will only become less common as Windows Phone's last release
+# was in 2015.
+	Windows Phone 8.1	Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; Microsoft; Lumia 532 Dual SIM) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537
+
+# Everything lower-cased; this is pretty rare.
+mozilla 5.0		mozilla/5.0 (iphone; cpu iphone os 11_0 like mac os x) applewebkit/604.1.38 (khtml, like gecko) version/11.0 mobile/15a372 safari/604.1
+
+# Just plain weird stuff.
+	iOS 13.3	Mozilla/5.0 (iPhone; U; CPU iPhone OS 13.3; en_US; ) AppleWebKit/0.0 (KHTML, like Gecko) Version/0.0; GmmClient:google_ios/com.google.Maps/5.35.5/Mobile/ios:iPhone12,1/iOS-AppStore
+Opera 12.00	Linux	Opera/8.87.(X11; Linux x86_64; lzh-TW) Presto/2.9.187 Version/12.00
+Chrome	Linux	Mozilla/5.0 (Linux; <Android Version>; <Build Tag etc.>) AppleWebKit/<WebKit Rev> (KHTML, like Gecko) Chrome/<Chrome Rev> Mobile Safari/<WebKit Rev>

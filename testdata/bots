@@ -1,4 +1,9 @@
 # vim:ts=18
+#
+# Some bots from zgo.at/isbot.
+#
+# TODO: expand a bit more; just don't feel like scanning all of this manually as
+# parsing bot names is not a priority for this library.
 
 		Baiduspider+(+http://www.baidu.com/search/spider.htm)
 		Baiduspider+(+http://www.baidu.com/search/spider.htm???);googlebot|baiduspider|baidu|spider|sogou|bingbot|bot|yahoo|soso|sosospider|360spider|youdaobot

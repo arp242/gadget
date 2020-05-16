@@ -1,16 +1,11 @@
-#
 # vim:ts=18
-# Big list of test data; comments can only be at the start of the line. Best
-# viewed with a tabstop of 18.
 #
-
-
 # 500 most common User-Agent strings, from GoatCounter (biased sample)
-######################################################################
+#
 
 # Empty string
-			''
-			Mozilla/5.0
+		''
+		Mozilla/5.0
 
 # No OS information at all
 Chrome 78		Mozilla/5.0 (en-US) AppleWebKit/537.36 (KHTML, like Gecko; Widget Server) Chrome/78.0.3904.74 Safari/537.36

@@ -24,20 +24,40 @@ Some design principles:
   as "Chrome 80".
 
 - Don't try to guess if we're dealing with a bot. Use [zgo.at/isbot][isbot] if
-  you want to do that.
+  you want to do that. This also doesn't go out of its way to parse the bot
+  name; it's mostly intended for actual browsers people use.
+
+- It also doesn't try to determine if this is a "mobile" browser; what does
+  "mobile" even mean? Why should a 12" tablet be mobile and my 12" laptop not?
+  It's usually better (and more reliable!) to just rely on the screen width
+  and/or use JS to determine if a client supports touch events.
 
 - If we don't know, then we don't know. Don't return useless values like
   "AppleWebKit 605.1.15" if there is no other information.
 
 While this won't cover 100% of the use cases, it makes it fast and easy to use
-for many other use cases.
+for other use cases. Specifically, it was designed to show browser and OS stats
+in [GoatCounter][gc], where you typically don't really care if someone is using
+Opera or Chrome, but just want to know which browser engines your customers are
+using and you need to support.
 
 [isbot]: https://github.com/zgoat/isbot
+[gc]: https://github.com/zgoat/goatcounter
 
 ---
 
 Most other libraries give far too detailed information to be useful, and some
-are lacking in accuracy too.
+are lacking in accuracy too. gadget is able to reduce 371,021 unqiue User-Agents
+to 40 browser engines and 306 browser string/version combinations.
+
+There's a small tail-end of browsers that aren't recognized correctly; only 17
+out of those 371,021 are parsed to "junk data" (or 46 requests in total, out of
+9.4 million). This is mostly due to people sending junk data such as misspelling
+Mozilla as "Mozzila", and not too much can be done about that.
+
+Getting it right 99.999995% of the time is good enough for me :-) It's not like
+the User-Agent is reliable anyway (Ever heard of "Chrome 66.6" or "Chrome
+999999"?), so this is fine.
 
 Simple comparison benchmark (from [`testlib.go`](/testlib.go)):
 

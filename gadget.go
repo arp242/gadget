@@ -5,16 +5,24 @@ import (
 	"strings"
 )
 
-// Assume lowest Safari version.
-// https://en.wikipedia.org/wiki/Safari_version_history#Safari_11_2
-
 var (
 	// Map Windows NT versions to actual product versions.
 	windowsVersions = map[string]string{"5.0": "2000", "5.1": "XP", "5.2": "XP",
 		"6.0": "Vista", "6.1": "7", "6.2": "8", "6.3": "8.1", "10.0": "10"}
 
+	// Often times Safari doesn't have an explicit version set, but we can infer
+	// a useful version number from AppleWebKit/<v>
 	// https://en.wikipedia.org/wiki/Safari_version_history#Safari_10
 	safariVersions = map[string]string{
+		"534.46.0":  "5.1",
+		"534.46":    "5.1",
+		"536.26":    "6.0",
+		"537.36":    "6.0", // Not listed; guess.
+		"537.51.1":  "7.0",
+		"537.51.2":  "7.0",
+		"600.1.3":   "8.0",
+		"600.1.4":   "8.0",
+		"601.1":     "9.0",
 		"601.1.46":  "9.0",
 		"601.1.56":  "9.0",
 		"601.2.7":   "9.0",
@@ -28,17 +36,19 @@ var (
 		"602.1.50":  "10.0",
 		"602.2.14":  "10.0",
 		"602.3.12":  "10.0",
-		"602.4.6 ":  "10.0",
+		"602.4.6":   "10.0",
 		"602.4.8":   "10.0",
 		"603.1.30":  "10.1",
 		"603.2.4 ":  "10.0",
 		"603.2.4":   "10.1",
 		"603.3.8":   "10.1",
+		"604.1.34":  "11.0",
 		"604.1.38":  "11.0",
 		"604.2.4":   "11.0",
 		"604.3.5":   "11.0",
 		"604.4.7":   "11.0",
 		"604.5.6":   "11.0",
+		"605":       "11.1", // Not listed; guess
 		"605.1.15":  "11.0",
 		"605.1.33":  "11.1",
 		"606.1.36":  "12.0",
@@ -64,6 +74,8 @@ type UserAgent struct {
 	OSVersion      string
 }
 
+// String shows the full Browser and OS name as "<browser> on <os>". If either
+// one is blank the "on" will be omitted.
 func (u UserAgent) String() string {
 	if u.OS() == "" {
 		return u.Browser()
@@ -74,6 +86,7 @@ func (u UserAgent) String() string {
 	return fmt.Sprintf("%s on %s", u.Browser(), u.OS())
 }
 
+// Browser gets the full browser, including the version (if any).
 func (u UserAgent) Browser() string {
 	if u.BrowserVersion == "" {
 		return u.BrowserName
@@ -81,6 +94,7 @@ func (u UserAgent) Browser() string {
 	return fmt.Sprintf("%s %s", u.BrowserName, u.BrowserVersion)
 }
 
+// OS gets the full operating system, including the version (if any).
 func (u UserAgent) OS() string {
 	if u.OSVersion == "" {
 		return u.OSName
@@ -88,6 +102,7 @@ func (u UserAgent) OS() string {
 	return fmt.Sprintf("%s %s", u.OSName, u.OSVersion)
 }
 
+// Parse a User-Agent header.
 func Parse(uaHeader string) UserAgent {
 	p := parse(uaHeader)
 	ua := UserAgent{}
@@ -109,14 +124,14 @@ func Parse(uaHeader string) UserAgent {
 			case strings.HasPrefix(s, "Android"):
 				ua.OSName = "Android"
 				if len(s) > 7 {
-					ua.OSVersion = maxVersion(s[8:], 2, true)
+					ua.OSVersion = maxVersion(after(s, 8), 2, true)
 				}
 				break oloop
 
 			case strings.HasPrefix(s, "Intel Mac OS X"):
 				ua.OSName = "macOS"
 				if len(s) > 14 {
-					ua.OSVersion = maxVersion(strings.ReplaceAll(s[15:], "_", "."), 2, false)
+					ua.OSVersion = maxVersion(strings.ReplaceAll(after(s, 15), "_", "."), 2, false)
 				}
 				break oloop
 
@@ -126,15 +141,25 @@ func Parse(uaHeader string) UserAgent {
 				if i > -1 && len(s) > i+3 {
 					// CPU iPhone OS 7_0 like Mac OS X
 					v := s[i+3:]
-					v = v[:strings.IndexRune(v, ' ')]
+					if j := strings.IndexRune(v, ' '); j > -1 {
+						v = v[:j]
+					}
 					ua.OSVersion = maxVersion(strings.ReplaceAll(v, "_", "."), 2, false)
+				}
+				break oloop
+
+			case strings.HasPrefix(s, "Windows Phone"):
+				ua.OSName = "Windows Phone"
+				sp := strings.Split(s, " ")
+				if len(sp) > 2 {
+					ua.OSVersion = maxVersion(sp[2], 2, true)
 				}
 				break oloop
 
 			case strings.HasPrefix(s, "Windows"):
 				ua.OSName = "Windows"
 				if i := strings.LastIndexByte(s, ' '); i > -1 {
-					ua.OSVersion = windowsVersions[s[i+1:]]
+					ua.OSVersion = windowsVersions[after(s, i+1)]
 				}
 				// Don't break to detect Trident/ string for IE 11
 				//break oloop
@@ -145,7 +170,9 @@ func Parse(uaHeader string) UserAgent {
 	if isIE {
 		ua.BrowserName = "Internet Explorer"
 		if i := strings.Index(uaHeader, "MSIE "); i > -1 {
-			ua.BrowserVersion = string(uaHeader[i+5])
+			if len(uaHeader) >= i+7 {
+				ua.BrowserVersion = strings.TrimSpace(strings.TrimRight(string(uaHeader[i+5:i+7]), "."))
+			}
 		} else {
 			ua.BrowserVersion = "11"
 		}
@@ -181,8 +208,8 @@ func Parse(uaHeader string) UserAgent {
 				// EdgeHTML identifies as Chrome, even though it's not.
 				for _, s2 := range p.products {
 					if strings.HasPrefix(s2, "Edge/") {
-						v := maxVersion(s2[5:], 1, false)
-						if v[0] == '1' {
+						v := maxVersion(after(s2, 5), 1, false)
+						if len(v) > 0 && v[0] == '1' {
 							ua.BrowserName = "Edge"
 							ua.BrowserVersion = v
 						}
@@ -191,17 +218,41 @@ func Parse(uaHeader string) UserAgent {
 				}
 
 				ua.BrowserName = "Chrome"
-				ua.BrowserVersion = maxVersion(s[7:], 1, false)
+				ua.BrowserVersion = maxVersion(after(s, 7), 1, false)
+				break bloop
+
+			case strings.HasPrefix(s, "Chromium/"):
+				ua.BrowserName = "Chrome"
+				ua.BrowserVersion = maxVersion(after(s, 9), 1, false)
 				break bloop
 
 			case strings.HasPrefix(s, "HeadlessChrome/"):
 				ua.BrowserName = "Chrome"
-				ua.BrowserVersion = maxVersion(s[15:], 1, false)
+				ua.BrowserVersion = maxVersion(after(s, 15), 1, false)
 				break bloop
 
 			case strings.HasPrefix(s, "Firefox/"):
 				ua.BrowserName = "Firefox"
-				ua.BrowserVersion = maxVersion(s[8:], 1, false)
+				ua.BrowserVersion = maxVersion(after(s, 8), 1, false)
+				break bloop
+
+			case strings.HasPrefix(s, "Opera/"):
+				if strings.Contains(uaHeader, "Opera Mini/") {
+					ua.BrowserName = "Opera Mini"
+				} else {
+					ua.BrowserName = "Opera"
+				}
+
+				for _, s2 := range p.products {
+					if strings.HasPrefix(s2, "Version/") {
+						ua.BrowserVersion = maxVersion(after(s2, 8), 2, false)
+					}
+				}
+
+				if ua.BrowserVersion == "" {
+					ua.BrowserVersion = maxVersion(after(s, 6), 2, false)
+				}
+
 				break bloop
 
 			// We need to do all sort of tricks for Safari :-/
@@ -213,16 +264,13 @@ func Parse(uaHeader string) UserAgent {
 				)
 				for _, s2 := range p.products {
 					if strings.HasPrefix(s2, "Version/") && !strings.Contains(s2, "15E") {
-						version = s2[8:]
+						version = after(s2, 8)
 						isSafari = true
 					}
 					if strings.HasPrefix(s2, "AppleWebKit/") {
 						webkit = s2
 					}
 
-					if s2 == "Mobile/15E148" {
-						isSafari = true
-					}
 					if strings.HasPrefix(s2, "FxiOS/") || strings.HasPrefix(s2, "CriOS/") || strings.HasPrefix(s2, "Mobile/") {
 						isSafari = true
 					}
@@ -230,9 +278,12 @@ func Parse(uaHeader string) UserAgent {
 				if isSafari {
 					ua.BrowserName = "Safari"
 					if version != "" {
+						// TODO: maybe just use maxVersion of 1? Not sure how
+						// meaningful the different between Safari 12.0 and 12.1
+						// is?
 						ua.BrowserVersion = maxVersion(version, 2, false)
 					} else if webkit != "" {
-						ua.BrowserVersion = safariVersions[webkit[12:]]
+						ua.BrowserVersion = safariVersions[after(webkit, 12)]
 					}
 					break bloop
 				}
@@ -264,12 +315,25 @@ func Parse(uaHeader string) UserAgent {
 
 func isNumber(s byte) bool { return s >= 0x30 && s <= 0x39 }
 func isLetter(s byte) bool { return (s >= 0x41 && s <= 0x5a) || (s >= 0x61 && s <= 0x7a) }
+func after(s string, n int) string { // Safer string slicing.
+	if n < 0 {
+		return ""
+	}
+	if len(s) > n {
+		return s[n:]
+	}
+	return ""
+}
 
 // Set maximum version level:
 //
 // n=1: 75.0  -> 75
 // n=2: 5.0.5 -> 5.0
 func maxVersion(v string, n int, trimZero bool) string {
+	if len(v) > 0 && !isNumber(v[0]) {
+		return ""
+	}
+
 	if strings.Count(v, ".") >= n {
 		s := strings.Split(v, ".")
 		if trimZero && s[n-1] == "0" {
@@ -290,6 +354,7 @@ type props struct {
 }
 
 func parse(ua string) props {
+	ua = strings.Trim(ua, "'") // Some clients wrap their UA in this.
 	p := props{}
 
 	s := strings.IndexRune(ua, '(')
