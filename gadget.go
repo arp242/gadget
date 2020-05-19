@@ -117,9 +117,10 @@ func Parse(uaHeader string) UserAgent {
 			case strings.HasPrefix(s, "Trident/") || strings.HasPrefix(s, "MSIE "):
 				isIE = true
 
-			case strings.HasPrefix(s, "Linux") || s == "X11":
+			case strings.HasPrefix(s, "Linux"):
 				ua.OSName = "Linux"
-				// Don't break as this might be Android.
+				// Don't break as this might be Android, FreeBSD, or something
+				// else more specific.
 
 			case strings.HasPrefix(s, "Android"):
 				ua.OSName = "Android"
@@ -163,6 +164,36 @@ func Parse(uaHeader string) UserAgent {
 				}
 				// Don't break to detect Trident/ string for IE 11
 				//break oloop
+
+			// Smaller systems last, so we need fewer string matches.
+			case strings.HasPrefix(s, "CrOS"):
+				ua.OSName = "Chrome OS"
+				// Need to map platform version to actual ChromeOS version (e.g.
+				// 12871.102.0 → 81.0.4044.141)
+				break oloop
+
+			case strings.HasPrefix(s, "OpenBSD"):
+				ua.OSName = "OpenBSD"
+				break oloop
+			case strings.HasPrefix(s, "FreeBSD"):
+				ua.OSName = "FreeBSD"
+				break oloop
+			case strings.HasPrefix(s, "NetBSD"):
+				ua.OSName = "NetBSD"
+				break oloop
+			case strings.HasPrefix(s, "DragonFly"):
+				ua.OSName = "DragonFly BSD"
+				break oloop
+			case strings.HasPrefix(s, "SunOS"):
+				ua.OSName = "SunOS"
+				break oloop
+			case strings.HasPrefix(s, "Tizen"):
+				ua.OSName = "Tizen"
+				ua.OSVersion = after(s, 6)
+				break oloop
+			case strings.HasPrefix(s, "PlayStation 4"):
+				ua.OSName = "PlayStation 4"
+				break oloop
 			}
 		}
 	}

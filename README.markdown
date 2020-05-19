@@ -47,8 +47,7 @@ using and you need to support.
 ---
 
 Most other libraries give far too detailed information to be useful, and some
-are lacking in accuracy too. gadget is able to reduce 371,021 unqiue User-Agents
-to 40 browser engines and 306 browser string/version combinations.
+are lacking in accuracy too.
 
 There's a small tail-end of browsers that aren't recognized correctly; only 17
 out of those 371,021 are parsed to "junk data" (or 46 requests in total, out of
@@ -59,7 +58,7 @@ Getting it right 99.999995% of the time is good enough for me :-) It's not like
 the User-Agent is reliable anyway (Ever heard of "Chrome 66.6" or "Chrome
 999999"?), so this is fine.
 
-Simple comparison benchmark (from [`testlib.go`](/testlib.go)):
+Simple comparison benchmark (from [`testlib.gox`](/testlib.gox)):
 
 | Library    | Total    | Per op     |
 | -------    | -----    | ------     |

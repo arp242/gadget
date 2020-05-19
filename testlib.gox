@@ -1,4 +1,8 @@
 // +build go_run_only
+//
+// Rename to testlib.go and go run it. It's named like this to prevent go get
+// from loading the libraries as a dependency.
+//
 
 package main
 
