@@ -41,8 +41,10 @@ PaleMoon 28.8	Windows 10	Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.9) Geck
 Firefox 43	FreeBSD	Mozilla/5.0 (X11; FreeBSD i386; rv:43.0) Gecko/20100101 Firefox/43.0 SeaMonkey/2.40
 Firefox 56	Linux	Mozilla/5.0 (X11; Linux x86_64; rv:56.0; Waterfox) Gecko/20100101 Firefox/56.2.6
 Firefox 56	macOS 10.12	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:56.0) Gecko/20100101 Firefox/56.0 Waterfox/56.2.13
+Firefox 2	macOS	Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en; rv:1.8.1.14) Gecko/20080409 Camino/1.6 (like Firefox/2.0.0.14)
 
 # Based on WebKit
+Safari 10.0	iOS 10.1	Mozilla/5.0 (iPad; CPU OS 10_1_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 YaBrowser/16.11.1.716.11 Mobile/14B100 Safari/602.1
 # TODO
 # Safari 13	FreeBSD	Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 Midori/6
 # Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) konqueror/4.14.26 Safari/537.21
@@ -54,7 +56,6 @@ Firefox 56	macOS 10.12	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:56.0) Ge
 # Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 Epiphany/605.1.15
 # Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Safari/605.1.15 Epiphany/605.1.15
 
-
 # QtWebEngine is based on Blink/Chrome.
 # TODO: maybe map QtWebEngine versions to Chrome versions, like we do for AppleWebKit.
 Chrome 69	Windows 10	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.3 Chrome/69.0.3497.128 Safari/537.36
@@ -64,6 +65,7 @@ Chrome 69	Windows 10	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.3
 Chrome 77	Linux	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/77.0.3865.129 Safari/537.36
 Chrome 65	Linux	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.11.3 Chrome/65.0.3325.230 Safari/537.36 Konqueror (WebEnginePart)
 Chrome 73	FreeBSD	Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.105 Otter/1.0.81
+Chrome 80	Android 9	Mozilla/5.0 (Linux; arm_64; Android 9; vivo 1906) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 YaBrowser/20.3.3.92.00 SA/1 Mobile Safari/537.36
 
 # BlackBerry
 # TODO: really rare, so probably not really worth supporting.

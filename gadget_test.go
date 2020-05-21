@@ -46,17 +46,11 @@ func TestParse(t *testing.T) {
 						t.Fatalf("Malformed line: %q\n%#v", line, s)
 					}
 					got := Parse(s[2])
-
-					if got.Browser() != s[0] || got.OS() != s[1] {
-						t.Log(s[2])
+					if got.Browser() == s[0] && got.OS() == s[1] {
+						return
 					}
 
-					if got.Browser() != s[0] {
-						t.Errorf("browser\nwant: %q\ngot:  %q", s[0], got.Browser())
-					}
-					if got.OS() != s[1] {
-						t.Errorf("OS\nwant: %q\ngot:  %q", s[1], got.OS())
-					}
+					t.Errorf("\nwant: %-18q %-18q\ngot:  %-18q %-18q", s[0], s[1], got.Browser(), got.OS())
 				})
 			}
 

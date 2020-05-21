@@ -60,10 +60,11 @@ var (
 	ignoreProduct = []string{"Mozilla/", "Gecko/", "AppleWebKit/",
 		"(KHTML,", "like", "Gecko)"}
 
-	// Known browsers that are not based on Chrome, Safari, or Firefox.
+	// Known browsers that are not based on Chrome, Safari, or Firefox but may
+	// identify as Chrome, Safari, or Firefox.
 	knownBrowsers = []string{
 		"BingPreview/",
-		"PhantomJS/",
+		"PhantomJS/", // TODO: I think this is actually just WebKit?
 		"Dillo/",
 		"PaleMoon/",
 	}
@@ -223,6 +224,7 @@ func Parse(uaHeader string) UserAgent {
 
 	// Get browser info.
 	{
+		// Get "known browsers" first.
 		for _, s := range p.products {
 			for _, k := range knownBrowsers {
 				if strings.HasPrefix(s, k) {
@@ -337,7 +339,8 @@ func Parse(uaHeader string) UserAgent {
 			first := p.products[0]
 
 			// Give up.
-			// TODO: maybe try going forward?
+			// TODO: maybe try going forward? I don't know ... seems to give me
+			// more false results than anything else.
 			for _, ig := range ignoreProduct {
 				if strings.HasPrefix(first, ig) {
 					return ua
