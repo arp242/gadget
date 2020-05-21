@@ -70,6 +70,69 @@ var (
 	}
 )
 
+var (
+	uaShortener = strings.NewReplacer(
+		"~", "~~", // This is so original ~ are preserved and can be decoded losslessly.
+		"Android", "~A",
+		"Chrome/", "~c",
+		"compatible", "~C",
+		"Edge/", "~e",
+		"Firefox/", "~f",
+		"Gecko/", "~g",
+		"(KHTML, like Gecko)", "~G",
+		"iPhone", "~i",
+		"Macintosh", "~I",
+		"AppleWebKit/", "~a",
+		"Linux", "~L",
+		"Mobile/", "~m",
+		"Mobile", "~M",
+		"Safari/", "~s",
+		"Version/", "~v",
+		"Windows", "~W",
+		"Mozilla/5.0 ", "~Z ", // This is to replace the prefix
+	)
+
+	// shortUADecoder is the inverse of uaShortener.
+	shortUADecoder = strings.NewReplacer(
+		"~~", "~",
+		"~A", "Android",
+		"~c", "Chrome/",
+		"~C", "compatible",
+		"~e", "Edge/",
+		"~f", "Firefox/",
+		"~g", "Gecko/",
+		"~G", "(KHTML, like Gecko)",
+		"~i", "iPhone",
+		"~I", "Macintosh",
+		"~a", "AppleWebKit/",
+		"~L", "Linux",
+		"~m", "Mobile/",
+		"~M", "Mobile",
+		"~s", "Safari/",
+		"~v", "Version/",
+		"~W", "Windows",
+		"~Z ", "Mozilla/5.0 ",
+	)
+)
+
+// Shorten a User-Agent string by replacing common strings with small tokens.
+//
+// Use Unshorten() to reverse it.
+//
+// Example:
+//
+//   Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36
+//   ~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c80.0.3987.132 ~s537.36
+//
+// The goal is not to produce the shortest output, but to provide a reasonably
+// short output while maintaining readability.
+//
+// Inspired by: https://github.com/icza/gox/blob/master/netx/httpx/httpx.go
+func Shorten(ua string) string { return uaShortener.Replace(ua) }
+
+// Unshorten reverses Shorten().
+func Unshorten(short string) string { return shortUADecoder.Replace(short) }
+
 type UserAgent struct {
 	BrowserName    string
 	BrowserVersion string
