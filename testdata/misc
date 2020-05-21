@@ -22,32 +22,54 @@ Chrome 56	Tizen 4.0	Mozilla/5.0 (SMART-TV; Linux; Tizen 4.0) AppleWebKit/537.36 
 Chrome 47	Tizen 3.0	Mozilla/5.0 (SMART-TV; Linux; Tizen 3.0) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/2.0 Chrome/47.0.2526.69 TV safari/537.36
 Opera Mini 12.16	Tizen	Opera/9.80 (Tizen; Opera Mini/7.7.18/163.89; U; en) Presto/2.12.423 Version/12.16
 
+Opera Mini 12.16	Java ME	Opera/9.80 (J2ME/MIDP; Opera Mini/4.1.15231/170.58; U; en) Presto/2.12.423 Version/12.16
+Opera Mini 12.16	Java ME	SAMSUNG-GT-S5611 Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.34814/174.78; U; tr) Presto/2.12.423 Version/12.16
+
+Opera Mini 12.16	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/4.4.39001/163.89; U; en) Presto/2.12.423 Version/12.16
+Opera Mini 12.16	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/6.1.27412/163.89; U; en) Presto/2.12.423 Version/12.16
+
+# TODO: WebKit-based, Haiku
+	Haiku	Mozilla/5.0 (Macintosh; Intel Haiku R1 x86) AppleWebKit/608.1.6 (KHTML, like Gecko) WebPositive/1.2 Version/11.1 Safari/608.1.6
+
 # Some smaller browsers.
-Dillo 3.0.5		Dillo/3.0.5
+Dillo 3.0		Dillo/3.0.5
+Lynx 2.8.8dev.9		Lynx/2.8.8dev.9 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/2.12.14
+PaleMoon 28.5	Linux	Mozilla/5.0 (X11; Linux i686; rv:60.9) Goanna/4.2 PaleMoon/28.5.0
+PaleMoon 28.8	Windows 10	Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.9) Gecko/20100101 Goanna/4.4 Firefox/68.9 PaleMoon/28.8.4
+
+# Uses the same engine as Firefox, so just list it as such.
+Firefox 43	FreeBSD	Mozilla/5.0 (X11; FreeBSD i386; rv:43.0) Gecko/20100101 Firefox/43.0 SeaMonkey/2.40
+Firefox 56	Linux	Mozilla/5.0 (X11; Linux x86_64; rv:56.0; Waterfox) Gecko/20100101 Firefox/56.2.6
+Firefox 56	macOS 10.12	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:56.0) Gecko/20100101 Firefox/56.0 Waterfox/56.2.13
+
+# Based on WebKit
+# TODO
+# Safari 13	FreeBSD	Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 Midori/6
+# Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) konqueror/4.14.26 Safari/537.21
+#
+# Mozilla/5.0 (Windows NT 6.2) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.81
+# Mozilla/5.0 (Macintosh; Intel Haiku R1 x86) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.01
+# Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.01
+# Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.81
+# Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 Epiphany/605.1.15
+# Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Safari/605.1.15 Epiphany/605.1.15
 
 
-# Mozilla/5.0 (X11; FreeBSD amd64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 Midori/6
-# Mozilla/5.0 (X11; FreeBSD i386 7.50; rv:60.48) (KHTML, like Gecko)  AppleWebKit/236.59 OPR/60.48;
-# Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/69.0.3497.128 Safari/537.36
-# Mozilla/5.0 (X11; FreeBSD i386 on amd64 5.58; rv:26.0) Gecko/20100101  Safari/26.0;
-# Mozilla/5.0 (X11; FreeBSD amd64; rv:52.0) Gecko/20100101 Firefox/52.0 SeaMonkey/2.49.1
-# Mozilla/5.0 (X11; FreeBSD i386; rv:43.0) Gecko/20100101 Firefox/43.0 SeaMonkey/2.40
-# Mozilla/5.0 (X11; FreeBSD i386; rv:43.0) Gecko/20100101 Firefox/43.0 SeaMonkey/2.40
-# Mozilla/5.0 (X11; NetBSD amd64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15
+# QtWebEngine is based on Blink/Chrome.
+# TODO: maybe map QtWebEngine versions to Chrome versions, like we do for AppleWebKit.
+Chrome 69	Windows 10	Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.12.3 Chrome/69.0.3497.128 Safari/537.36
+	Linux	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/602.1 (KHTML, like Gecko) qutebrowser/1.7.0 Version/9.0 Safari/602.1
+	OpenBSD	Mozilla/5.0 (X11; OpenBSD) AppleWebKit/538.1 (KHTML, like Gecko) qutebrowser/0.11.1 Version/7.0 Safari/538.1
+	Linux	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.14.1
+Chrome 77	Linux	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Falkon/3.1.0 Chrome/77.0.3865.129 Safari/537.36
+Chrome 65	Linux	Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/5.11.3 Chrome/65.0.3325.230 Safari/537.36 Konqueror (WebEnginePart)
+Chrome 73	FreeBSD	Mozilla/5.0 (X11; FreeBSD amd64; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.105 Otter/1.0.81
+
+# BlackBerry
+# TODO: really rare, so probably not really worth supporting.
 # Mozilla/5.0 (BB10; Kbd) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.2.0.1803 Mobile Safari/537.35+
 # Mozilla/5.0 (BB10; Kbd) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.3.2.2876 Mobile Safari/537.35+
 # Mozilla/5.0 (BB10; Touch) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.3.3.3216 Mobile Safari/537.35+
-# Opera/9.80 (MAUI Runtime; Opera Mini/4.4.39001/163.89; U; en) Presto/2.12.423 Version/12.16
-# Opera/9.80 (MAUI Runtime; Opera Mini/6.1.27412/163.89; U; en) Presto/2.12.423 Version/12.16
-# Opera/9.80 (SpreadTrum; Opera Mini/4.4.31492/158.20; U; en) Presto/2.12.423 Version/12.16
-# Mozilla/5.0 (X11; GNU/Linux) AppleWebKit/537.36 (KHTML, like Gecko) Chromium/75.0.3770.100 Chrome/75.0.3770.100 Safari/537.36 Tesla/2019.32.12.2-58f3b76
-# Mozilla/5.0 (X11; GNU/Linux) AppleWebKit/537.36 (KHTML, like Gecko) Chromium/73.0.3683.101 Chrome/73.0.3683.101 Safari/537.36 Tesla QtCarBrowser
-# Mozilla/5.0 (X11; GNU/Linux) AppleWebKit/537.36 (KHTML, like Gecko) Chromium/75.0.3770.100 Chrome/75.0.3770.100 Safari/537.36 Tesla/2019.40.2.1-38f55d9f9205
-# Mozilla/5.0 (X11; GNU/Linux) AppleWebKit/537.36 (KHTML, like Gecko) Chromium/75.0.3770.100 Chrome/75.0.3770.100 Safari/537.36 Tesla/2019.36.2.4-fc422c3
-# Mozilla/5.0 (X11; Linux x86_64; rv:56.0; Waterfox) Gecko/20100101 Firefox/56.2.6
-# Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:56.0) Gecko/20100101 Firefox/56.0 Waterfox/56.2.13
-# Mozilla/5.0 (iPad; CPU OS 12_1_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/16D57 Flipboard/4.2.58
-
 
 # Few IE strings that gave me problems.
 Internet Explorer 10	Windows 7	Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)
@@ -61,8 +83,6 @@ Opera 12.16	Linux	Opera/9.80 (X11; Linux zvav; U; en) Presto/2.12.423 Version/12
 Opera 12.18	Windows 8	Opera/9.80 (Windows NT 6.2; Win64; x64) Presto/2.12.388 Version/12.18
 Opera 9.64	Windows Vista	Opera/9.64 (Windows NT 6.0; U; zh-cn) Presto/2.1.1
 Opera 9.64	macOS	Opera/9.64 (Macintosh; Intel Mac OS X; U; en) Presto 2.1.1
-# TODO: list OS as Java or something.
-Opera Mini 12.16		Opera/9.80 (J2ME/MIDP; Opera Mini/4.1.15231/170.58; U; en) Presto/2.12.423 Version/12.16
 Opera Mini 12.16	Android	Opera/9.80 (Android; Opera Mini/47.0.2254/170.58; U; az) Presto/2.12.423 Version/12.16
 Opera Mini 12.16	Android	Opera/9.80 (Android; Opera Mini/7.6.40234/170.58; U; ru) Presto/2.12.423 Version/12.16
 Opera Mini 12.16	Windows Phone	Opera/9.80 (Windows Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 Version/12.16

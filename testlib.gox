@@ -10,6 +10,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"reflect"
 	"runtime"
@@ -32,6 +33,8 @@ type UserAgent struct {
 
 type UserAgents []UserAgent
 
+const benchN = 10
+
 func (ua UserAgents) String() string {
 	var b strings.Builder
 	for _, u := range ua {
@@ -49,52 +52,70 @@ func c(err error) {
 
 func diff(h string, data, result UserAgents) {
 	fmt.Printf("\n=== %s ===\n\n", h)
+	t := tabwriter.NewWriter(os.Stdout, 18, 18, 2, ' ', 0)
+
 	for i, r := range result {
 		d := data[i]
-		if r.Browser != d.Browser || r.OS != d.OS {
-			fmt.Printf("%s\n", d.UA)
+		if r.Browser == d.Browser && r.OS == d.OS {
+			continue
 		}
 
+		fmt.Fprintf(t, "-%s\t%s\t%s\n", d.Browser, d.OS, d.UA)
+		fmt.Fprintf(t, "+%s\t%s\t%s\n", r.Browser, r.OS, d.UA)
+		fmt.Fprintln(t, "")
+		t.Flush()
+
 		if r.Browser != d.Browser {
-			fmt.Printf("    want: %q\n    got:  %q\n", d.Browser, r.Browser)
+			//fmt.Printf("want: %q\n    got:  %q\n", d.Browser, r.Browser)
+			//fmt.Fprintf(t, "want: %q\n    got:  %q\n", d.Browser, r.Browser)
 		}
 		if r.OS != d.OS {
-			fmt.Printf("    want: %q\n    got:  %q\n", d.OS, r.OS)
+			//fmt.Printf("    want: %q\n    got:  %q\n", d.OS, r.OS)
 		}
+
+		if r.Browser != d.Browser || r.OS != d.OS {
+			//fmt.Fprintf(t, "\t%s\n", d.UA)
+		}
+
 	}
 }
 
 func bench(t io.Writer, h string, data UserAgents, f func(UserAgents, bool)) {
-	n := 10
-
 	start := time.Now()
-	for i := 0; i < n; i++ {
+	for i := 0; i < benchN; i++ {
 		f(data, false)
 	}
 	d := time.Now().Sub(start)
-	fmt.Fprintf(t, "%s\t%.4fs\t%s\n", h, d.Seconds(), (d / time.Duration(n) / time.Duration(len(data))))
+	fmt.Fprintf(t, "%s\t%.4fs\t%s\n", h, d.Seconds(), (d / time.Duration(benchN) / time.Duration(len(data))))
 }
 
 func loadTestData() UserAgents {
-	fp, err := os.Open("./testdata/top500")
-	c(err)
-	defer fp.Close()
+	files, err := ioutil.ReadDir("./testdata")
+	if err != nil {
+		panic(err)
+	}
 
 	var uas UserAgents
-	scanner := bufio.NewScanner(fp)
-	for scanner.Scan() {
-		line := scanner.Text()
-		if line == "" || line[0] == '#' {
-			continue
+	for _, f := range files {
+		fp, err := os.Open("./testdata/" + f.Name())
+		c(err)
+		defer fp.Close()
+
+		scanner := bufio.NewScanner(fp)
+		for scanner.Scan() {
+			line := scanner.Text()
+			if line == "" || line[0] == '#' {
+				continue
+			}
+			s := strings.Split(line, "\t")
+			uas = append(uas, UserAgent{
+				Browser: s[0],
+				OS:      s[1],
+				UA:      s[2],
+			})
 		}
-		s := strings.Split(line, "\t")
-		uas = append(uas, UserAgent{
-			Browser: s[0],
-			OS:      s[1],
-			UA:      s[2],
-		})
+		c(scanner.Err())
 	}
-	c(scanner.Err())
 
 	return uas
 }
@@ -130,7 +151,7 @@ func main() {
 
 	if len(os.Args) > 1 {
 		t := tabwriter.NewWriter(os.Stdout, 8, 8, 2, ' ', 0)
-		fmt.Fprintln(t, "Library\tTotal\tPer op")
+		fmt.Fprintf(t, "Library\tTotal (%d×%d)\tPer op\n", len(data), benchN)
 		for _, f := range funcs {
 			bench(t,
 				runtime.FuncForPC(reflect.ValueOf(f).Pointer()).Name()[10:],

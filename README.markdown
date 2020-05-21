@@ -60,10 +60,9 @@ the User-Agent is reliable anyway (Ever heard of "Chrome 66.6" or "Chrome
 
 Simple comparison benchmark (from [`testlib.gox`](/testlib.gox)):
 
-| Library    | Total    | Per op     |
-| -------    | -----    | ------     |
-| gadget     | 0.0129s  | 2.586µs    |
-| user_agent | 0.0234s  | 4.685µs    |
-| useragent  | 0.0270s  | 5.392µs    |
-| uasurfer   | 0.0271s  | 5.42µs     |
-| uaparser   | 10.4716s | 2.094321ms |
+    Library     Total (577×10)  Per op
+    gadget      0.0164s         2.846µs
+    uasurfer    0.0361s         6.255µs
+    useragent   0.0310s         5.379µs
+    user_agent  0.0275s         4.764µs
+    uaparser    11.7110s        2.029633ms

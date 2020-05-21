@@ -64,6 +64,8 @@ var (
 	knownBrowsers = []string{
 		"BingPreview/",
 		"PhantomJS/",
+		"Dillo/",
+		"PaleMoon/",
 	}
 )
 
@@ -194,6 +196,15 @@ func Parse(uaHeader string) UserAgent {
 			case strings.HasPrefix(s, "PlayStation 4"):
 				ua.OSName = "PlayStation 4"
 				break oloop
+			case s == "J2ME/MIDP":
+				ua.OSName = "Java ME"
+				break oloop
+			case s == "MAUI Runtime":
+				ua.OSName = "MAUI Runtime"
+				break oloop
+			case strings.Contains(s, " Haiku "):
+				ua.OSName = "Haiku"
+				break oloop
 			}
 		}
 	}
@@ -218,7 +229,7 @@ func Parse(uaHeader string) UserAgent {
 					slash := strings.IndexRune(s, '/')
 					if slash > -1 {
 						ua.BrowserName = s[:slash]
-						ua.BrowserVersion = s[slash+1:]
+						ua.BrowserVersion = maxVersion(s[slash+1:], 2, false)
 					}
 
 					return ua
