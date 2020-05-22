@@ -8,7 +8,7 @@ import (
 var (
 	// Map Windows NT versions to actual product versions.
 	windowsVersions = map[string]string{"5.0": "2000", "5.1": "XP", "5.2": "XP",
-		"6.0": "Vista", "6.1": "7", "6.2": "8", "6.3": "8.1", "10.0": "10"}
+		"6.0": "Vista", "6.1": "7", "6.2": "8", "6.3": "8.1", "10.0": "10", "CE": "CE"}
 
 	// Often times Safari doesn't have an explicit version set, but we can infer
 	// a useful version number from AppleWebKit/<v>
@@ -297,6 +297,9 @@ func Parse(uaHeader string) UserAgent {
 			case strings.Contains(s, " Haiku "):
 				ua.OSName = "Haiku"
 				break oloop
+			case strings.Contains(s, "Fuchsia"):
+				ua.OSName = "Fuchsia"
+				break oloop
 			case strings.Contains(s, "Sailfish "):
 				ua.OSName = "Sailfish"
 				ua.OSVersion = maxVersion(after(s, 9), 2, false)
@@ -332,6 +335,16 @@ func Parse(uaHeader string) UserAgent {
 			ua.BrowserVersion = "11"
 		}
 		return ua
+	}
+
+	// KaiOS puts their OS in the product, but looks like it's fairly common in e.g.
+	// India, so do special tricks.
+	for _, s := range p.products {
+		if strings.HasPrefix(s, "KAIOS/") {
+			ua.OSName = "KaiOS"
+			ua.OSVersion = maxVersion(after(s, 6), 2, false)
+			break
+		}
 	}
 
 	// Get browser info.

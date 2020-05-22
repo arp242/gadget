@@ -354,5 +354,5 @@ Dalvik 1.6	Android 4	Dalvik/1.6.0 (~L; U; ~A 4.0.4; W2430 Build/IMM76D)014; Prof
 # Android-4.0 Engine:AppleWebKit-537.36
 Chrome 43	Android 5	~Z (~L; ~A 5.0; SM-G900P Build/LRX21T; wv) ~a537.36 ~G ~v4.0 ~c43.0.2357.121 ~M ~s537.36 [FB_IAB/FB4A;FBAV/35.0.0.48.273;]
 
-#
+# NOTE: wtf?
 		[FBAN/FB4A;FBAV/16.0.0.20.15;FBBV/4061184;FBDM/{density=1.5,width=540,height=960};FBLC/en_US;FB_FW/2;FBCR/MY CELCOM;FBPN/com.facebook.katana;FBDV/Lenovo A850+;FBSV/4.2.2;FBOP/1;FBCA/armeabi-v7a:armeabi;]

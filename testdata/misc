@@ -28,9 +28,9 @@ Opera Mini 7.1	Java ME	SAMSUNG-GT-S5611 Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.34
 Opera Mini 4.4	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/4.4.39001/163.89; U; en) Presto/2.12.423 ~v12.16
 Opera Mini 6.1	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/6.1.27412/163.89; U; en) Presto/2.12.423 ~v12.16
 Firefox 45	Sailfish 3.0	~Z (~L; U; Sailfish 3.0; ~M; rv:45.0) ~g45.0 ~f45.0 SailfishBrowser/1.0
-
-# TODO: WebKit-based
-	Haiku	~Z (~I; Intel Haiku R1 x86) ~a608.1.6 ~G WebPositive/1.2 ~v11.1 ~s608.1.6
+Chrome 71	Fuchsia	~Z (X11; Fuchsia x86_64) ~a537.36 ~G ~c71.0.3557.0 ~s537.36
+Firefox 48	KaiOS 2.0	~Z (~M; LYF/F30C/LYF_F30C-000-09-10-140318; ~A; rv:48.0) ~g48.0 ~f48.0 KAIOS/2.0
+Firefox 48	KaiOS 2.5	~Z (~M; Nokia_8110_4G; rv:48.0) ~g48.0 ~f48.0 KAIOS/2.5
 
 # Some smaller browsers.
 Dillo 3.0		Dillo/3.0.5
@@ -72,6 +72,7 @@ Chrome 77	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G Falkon/3.1.0 ~c77.0.3865.129 ~s5
 Chrome 65	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G QtWebEngine/5.11.3 ~c65.0.3325.230 ~s537.36 Konqueror (WebEnginePart)
 Chrome 73	FreeBSD	~Z (X11; FreeBSD amd64; ~L x86_64) ~a537.36 ~G ~c73.0.3683.105 Otter/1.0.81
 Chrome 80	Android 9	~Z (~L; arm_64; ~A 9; vivo 1906) ~a537.36 ~G ~c80.0.3987.132 YaBrowser/20.3.3.92.00 SA/1 ~M ~s537.36
+Chrome 56	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G QupZilla/2.2.3 ~c56.0.2924.122 ~s537.36
 
 # Few IE strings that gave me problems.
 Internet Explorer 10	Windows 7	~Z (~C; MSIE 10.0; ~W NT 6.1; WOW64; Trident/6.0)
