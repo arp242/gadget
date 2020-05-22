@@ -39,6 +39,10 @@ Some design principles:
   It's usually better (and more reliable!) to rely on the screen width and/or
   use JS to determine if a client supports touch events and is "mobile".
 
+- Don't go out of our way to get rather old User-Agents correct; some libraries
+  have test cases for things like "Netscape on Windows ME", which doesn't strike
+  me as very useful in 2020.
+
 - If we don't know, then we don't know. Don't return useless values like
   "AppleWebKit 605.1.15" if there is no other information.
 

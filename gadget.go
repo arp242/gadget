@@ -67,6 +67,7 @@ var (
 		"PhantomJS/", // TODO: I think this is actually just WebKit?
 		"Dillo/",
 		"PaleMoon/",
+		"Basilisk/",
 	}
 )
 
@@ -292,6 +293,27 @@ func Parse(uaHeader string) UserAgent {
 			case strings.Contains(s, " Haiku "):
 				ua.OSName = "Haiku"
 				break oloop
+			case strings.Contains(s, "Sailfish "):
+				ua.OSName = "Sailfish"
+				ua.OSVersion = maxVersion(after(s, 9), 2, false)
+				break oloop
+			}
+		}
+	}
+
+	if ua.OSName == "Linux" {
+		for _, s := range p.system {
+			if s == "Ubuntu" || s == "CentOS" || s == "Fedora" || s == "Debian" {
+				ua.OSVersion = s
+				break
+			}
+		}
+		if ua.OSVersion == "" {
+			for _, s := range p.products {
+				if s == "Ubuntu" || s == "CentOS" || s == "Fedora" || s == "Debian" {
+					ua.OSVersion = s
+					break
+				}
 			}
 		}
 	}

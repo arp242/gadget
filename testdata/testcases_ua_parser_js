@@ -1,0 +1,435 @@
+# vim:ts=22:tw=0
+#
+# Testcases from: https://github.com/faisalman/ua-parser-js#
+#
+# curl https://github.com/faisalman/ua-parser-js/blob/master/test/browser-test.json |
+#   jq -r '.[] | "# " + .desc + "| " + .expect.name + " " + .expect.major + "\n" + .expect.name + " " + .expect.major + "\t\t" + .ua'
+# :%s/\<undefined\>\t/\t/
+#
+#https://github.com/faisalman/ua-parser-js/blob/master/test/os-test.json
+#https://github.com/faisalman/ua-parser-js/blob/master/test/mediaplayer-test.json
+#https://github.com/faisalman/ua-parser-js/blob/master/test/engine-test.json
+
+
+# 360 Browser on iOS| 360 Browser undefined
+# TODO: 360 is WebKit on iOS, like everything else; but lacks "Safari/" so not recognized.
+	iOS 12.4	~Z (~i; CPU ~i OS 12_4_1 like Mac OS X) ~a607.3.9 ~G ~m16G102 QHBrowser/317 QihooBrowser/4.0.10
+
+# Android Browser on Galaxy Nexus| Android Browser 4
+# NOTE: just sends very generic info, and for very old Android versions. Not worth getting this right.
+	Android 4	~Z (~L; U; ~A 4.0.2; en-us; Galaxy Nexus Build/ICL53F) ~a534.30 ~G ~v4.0 ~M ~s534.30
+
+# Android Browser on Galaxy S3| Android Browser 1
+Chrome 28	Android 4.4	~Z (~L; ~A 4.4.4; en-us; SAMSUNG GT-I9300I Build/KTU84P) ~a537.36 ~G ~v1.5 ~c28.0.1500.94 ~M ~s537.36
+
+# Android Browser on HTC Flyer (P510E)| Android Browser 4
+	Android 3.2	~Z (~L; U; ~A 3.2.1; ru-ru; HTC Flyer P510e Build/HTK75C) ~a534.13 ~G ~v4.0 ~s534.13
+
+# Android Browser on Huawei Honor Glory II (U9508)| Android Browser 4
+	Android 4	~Z (~L; U; ~A 4.0.4; ru-by; HUAWEI U9508 Build/HuaweiU9508) ~a534.30 ~G ~v4.0 ~M ~s534.30 ACHEETAHI/2100050044
+
+# Android Browser on Huawei P8 (H891L)| Android Browser 4
+Chrome 33	Android 4.4	~Z (~L; ~A 4.4.4; HUAWEI H891L Build/HuaweiH891L) ~a537.36 ~G ~v4.0 ~c33.0.0.0 ~M ~s537.36
+
+# Android Browser on Samsung S6 (SM-G925F)| Samsung Browser 3
+Chrome 38	Android 5	~Z (~L; ~A 5.0.2; SAMSUNG SM-G925F Build/LRX22G) ~a537.36 ~G SamsungBrowser/3.0 ~c38.0.2125.102 ~M ~s537.36
+
+# Sailfish Browser| Sailfish Browser 1
+Firefox 45	Sailfish 3.0	~Z (~L; U; Sailfish 3.0; ~M; rv:45.0) ~g45.0 ~f45.0 SailfishBrowser/1.0
+
+# Arora| Arora 0
+# NOTE: no usefil info; last version 9 years ago.
+	Windows XP	~Z (~W; U; ~W NT 5.1; de-CH) ~a523.15 (KHTML, like Gecko, ~s419.3) Arora/0.2
+
+# Avant| Avant  undefined
+Internet Explorer 8	Windows XP	Mozilla/4.0 (~C; MSIE 8.0; ~W NT 5.1; Trident/4.0; GTB5; Avant Browser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)
+
+# Avast Secure Browser| Avast Secure Browser 72
+Chrome 72	Windows 10	~Z (~W NT 10.0; WOW64) ~a537.36 ~G ~c72.0.3626.121 ~s537.36 Avast/72.0.1174.122
+
+# AVG Secure Browser| AVG Secure Browser 72
+Chrome 72	Windows 10	~Z (~W NT 10.0; WOW64) ~a537.36 ~G ~c72.0.3626.121 ~s537.36 AVG/72.0.719.123
+
+# Baidu| baidubrowser 1
+Internet Explorer 6	Windows XP	Mozilla/4.0 (~C; MSIE 6.0; ~W NT 5.1; SV1; baidubrowser 1.x)
+
+# Bolt| Bolt 0
+# NOTE: old Java ME browser; last version 2010
+		~Z (X11; 78; CentOS; US-en) ~a527+ ~G Bolt/0.862 ~v3.0 ~s523.15
+
+# Bowser| Bowser 0
+# NOTE: weird/old iOS system string.
+Chrome 27		~Z (iOS; like Mac OS X) ~a536.36 ~G not ~c27.0.1500.95 ~m10B141 ~s537.36 Bowser/0.2.1
+
+# Camino| Camino 2
+# NOTE: weird/old macOS system string.
+Firefox 3		~Z (~I; U; PPC Mac OS X 10.4; en; rv:1.9.0.19) ~g2011091218 Camino/2.0.9 (like ~f3.0.19)
+
+# Chimera| Chimera 0
+# TODO: really old, but should be able to get "Chimera 0.6" out of there; need to read past Gecko/.. string.
+		~Z (~I; U; PPC Mac OS X; pl-PL; rv:1.0.1) ~g20021111 Chimera/0.6
+
+# Chrome| Chrome 20
+Chrome 20	Windows 8	~Z (~W NT 6.2) ~a536.6 ~G ~c20.0.1090.0 ~s536.6
+
+# Chrome Headless| Chrome Headless undefined
+# NOTE: no real info other than "HeadlessChrome"
+	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G HeadlessChrome ~s537.36
+
+# Chrome Headless| Chrome Headless 60
+Chrome 60	macOS 10.12	~Z (~I; Intel Mac OS X 10_12_6) ~a537.36 ~G Headless~c60.0.3112.113 ~s537.36
+
+# Chrome WebView| Chrome WebView 43
+Chrome 43	Android 5.1	~Z (~L; ~A 5.1.1; Nexus 5 Build/LMY48B; wv) ~a537.36 ~G ~v4.0 ~c43.0.2357.65 ~M ~s537.36
+
+# Chrome on iOS| Chrome 19
+Safari 5.1	iOS 5.1	~Z (~i; U; CPU ~i OS 5_1_1 like Mac OS X; en) ~a534.46.0 ~G CriOS/19.0.1084.60 ~m9B206 ~s7534.48.3
+
+# Chromium| Chromium 16
+Chrome 16	Linux	~Z (X11; ~L i686) ~a535.7 ~G Ubuntu/11.10 Chromium/16.0.912.21 ~c16.0.912.21 ~s535.7
+
+# Chrome on Android| Chrome 16
+# TODO: not sure what "CrMo" is? Seems old stuff, so ignore for now.
+	Android 4	~Z (~L; U; ~A-4.0.3; en-us; Galaxy Nexus Build/IML74K) ~a535.7 ~G CrMo/16.0.912.75 ~M ~s535.7
+
+# Dillo| Dillo 2
+Dillo 2.2		Dillo/2.2
+
+# Dolphin| Dolphin 2
+# TODO: Need to figure out this one, some versions have "Dolphin Jetpack" as a webkit-based engine.
+		~Z (SCH-F859/F859DG12;U;NUCLEUS/2.1;Profile/MIDP-2.1 Configuration/CLDC-1.1;480*800;CTC/2.0) Dolfin/2.0
+
+# Doris| Doris 1
+Doris 1.15		Doris/1.15 [en] (Symbian)
+
+# Epiphany| Epiphany 1
+# TODO
+	FreeBSD	~Z (X11; U; FreeBSD i386; en-US; rv:1.7) ~g20040628 Epiphany/1.2.6
+
+# Waterfox| Waterfox 55
+Firefox 55	Linux	~Z (X11; ~L x86_64; rv:55.0) ~g20100101 ~f55.2.2 Waterfox/55.2.2
+
+# PaleMoon| PaleMoon 27
+PaleMoon 27.6	Linux	~Z (X11; ~L x86_64; rv:52.9) ~g20100101 Goanna/3.4 ~f52.9 PaleMoon/27.6.1
+
+# Basilisk| Basilisk 20171113
+Basilisk 20171113	Linux	~Z (X11; ~L x86_64; rv:55.0) ~g20100101 Goanna/4.0 ~f55.0 Basilisk/20171113
+
+# Facebook in-App Browser for Android| Facebook 35
+Chrome 43	Android 5	~Z (~L; ~A 5.0; SM-G900P Build/LRX21T; wv) ~a537.36 ~G ~v4.0 ~c43.0.2357.121 ~M ~s537.36 [FB_IAB/FB4A;FBAV/35.0.0.48.273;]
+
+# Facebook in-App Browser for iOS| Facebook 91
+# TODO: see if we can get Safari out of here.
+	iOS 10.3	~Z (~i; CPU ~i OS 10_3_1 like Mac OS X) ~a603.1.30 ~G ~m14E304 [FBAN/FBIOS;FBAV/91.0.0.41.73;FBBV/57050710;FBDV/~i8,1;FBMD/~i;FBSN/iOS;FBSV/10.3.1;FBSS/2;FBCR/Telekom.de;FBID/phone;FBLC/de_DE;FBOP/5;FBRV/0])
+
+# Falkon| Falkon 3
+Chrome 61	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G Falkon/3.0.0 ~c61.0.3163.140 ~s537.36
+
+# Firebird| Firebird 0
+# NOTE: ancient
+	Windows	~Z (~W; U; Win98; en-US; rv:1.5) ~g20031007 Firebird/0.7
+
+# Firefox| Firefox 15
+Firefox 15	Windows 7	~Z (~W NT 6.1; rv:15.0) ~g20120716 ~f15.0a2
+
+# Fennec| Fennec 1
+# NOTE: old Firefox-based thing
+	Linux	~Z (X11; U; ~L armv61; en-US; rv:1.9.1b2pre) ~g20081015 Fennec/1.0a1
+
+# Firefox Focus| Firefox Focus 6
+# NOTE: this is correct, as it uses "Blink engine in version 6.x or earlier, and GeckoView since version 7.0"
+Chrome 68	Android 7	~Z (~L; ~A 7.0) ~a537.36 ~G ~v4.0 Focus/6.1.1 ~c68.0.3440.91 ~M ~s537.36
+
+# Flock| Flock 2
+Firefox 3	Linux	~Z (X11; U; ~L i686; en-US; rv:1.9.0.3) ~g2008100716 ~f3.0.3 Flock/2.0
+
+# GoBrowser| GoBrowser 1
+# NOTE: not sure what this is, but Nokia 5700 is from 2007.
+		Nokia5700XpressMusic/GoBrowser/1.6.91
+
+# IceApe| Iceape 2
+# NOTE: old Debian rebrand of SeaMonkey
+	Linux	~Z (X11; U; ~L i686; en-US; rv:1.9.1.19) ~g20110817 Iceape/2.0.14
+
+# IceCat| IceCat 3
+# NOTE: old version without Firefox/ which current versions send.
+	Linux	~Z (X11; U; ~L i686; en-US; rv:1.9.0.3) ~g2008092921 IceCat/3.0.3-g1
+
+# Iceweasel| Iceweasel 3
+# NOTE: discontinued long ago; and it's just Firefox anyway.
+	Linux	~Z (X11; U; ~L i686; de; rv:1.9.0.16) ~g2009121610 Iceweasel/3.0.6 (Debian-3.0.6-3)
+
+# iCab| iCab 2
+# NOTE: very old version before rewrite to WebKit
+iCab 2.9.5		iCab/2.9.5 (~I; U; PPC; Mac OS X)
+
+# IEMobile| IEMobile 7
+# NOTE: probably not worth getting the old Windows CE version from this string.
+Internet Explorer 6	Windows	Mozilla/4.0 (~C; MSIE 6.0; ~W CE; IE~M 7.11) 320x240; VZW; Motorola-Q9c; ~W ~M 6.1 Standard
+
+# IE 11 with IE token| IE 11
+Internet Explorer 11	Windows 8.1	~Z (IE 11.0; ~W NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko
+
+# IE 11 without IE token| IE 11
+Internet Explorer 11	Windows 8.1	~Z (~W NT 6.3; Trident/7.0; rv 11.0) like Gecko
+
+# K-Meleon| K-Meleon 0
+# NOTE: ancient
+	Windows	~Z (~W; U; Win98; en-US; rv:1.5) ~g20031016 K-Meleon/0.8.2
+
+# Kindle Browser| Kindle 2
+# NOTE: ancient
+	Linux	Mozilla/4.0 (~C; ~L 2.6.22) NetFront/3.4 Kindle/2.5 (screen 600x800; rotate)
+
+# Konqueror| Konqueror 3
+# NOTE: very old Konqueror
+	Linux	~Z (~C; Konqueror/3.5; ~L; X11; x86_64) KHTML/3.5.6 (like Gecko) (Kubuntu)
+
+# Konqueror| Konqueror 5
+# TODO: Konqueror 5 seems to support multiple engines, need to check this.
+	Linux	~Z (X11; ~L i686) ~a534.34 ~G konqueror/5.0.97 ~s534.34
+
+# LINE on Android| Line 6
+Chrome 51	Android 5	~Z (~L; ~A 5.0; ASUS_Z00AD Build/LRX21V; wv) ~a537.36 ~G ~v4.0 ~c51.0.2704.81 ~M ~s537.36 Line/6.5.1/IAB
+
+# LINE on iOS| Line 8
+# TODO: not sure what this is?
+	iOS 11.2	~Z (~i; CPU ~i OS 11_2_6 like Mac OS X) ~a604.5.6 ~G ~m15D100 Safari Line/8.4.1
+
+# Lunascape| Lunascape 5
+Firefox 3	Windows XP	~Z (~W; U; ~W NT 5.1; en-US; rv:1.9.1.2) ~g20090804 ~f3.5.2 Lunascape/5.1.4.5
+
+# Lynx| Lynx 2
+Lynx 2.8.5dev.16		Lynx/2.8.5dev.16 libwww-FM/2.14 SSL-MM/1.4.1 OpenSSL/0.9.6b
+
+# Maemo Browser| Maemo Browser 1
+# NOTE: very old version
+# TODO: do look at getting modern Maemo OS name.
+Firefox 3	Linux	~Z (X11; U; ~L armv7l; ru-RU; rv:1.9.2.3pre) ~g20100723 ~f3.5 Maemo Browser 1.7.4.8 RX-51 N900
+
+# Maxthon| Maxthon undefined
+Internet Explorer 7	Windows XP	Mozilla/4.0 (~C; MSIE 7.0; ~W NT 5.1; SV1; Maxthon; .NET CLR 1.1.4322)
+
+# Midori| Midori 0
+# NOTE: very old version.
+Midori 0.2.2	Linux	Midori/0.2.2 (X11; ~L i686; U; en-us) WebKit/531.2+
+
+# Minimo| Minimo 0
+# NOTE: "Mini Mozilla"; last release 2007
+	Linux	~Z (X11; U; ~L armv6l; rv 1.8.1.5pre) ~g20070619 Minimo/0.020
+
+# MIUI Browser on Xiaomi Hongmi WCDMA (HM2013023)| MIUI Browser 1
+# NOTE: very old
+	Android 4.2	~Z (~L; U; ~A 4.2.2; ru-ru; 2013023 Build/HM2013023) ~a534.30 ~G ~v4.0 ~M ~s534.30 XiaoMi/MiuiBrowser/1.0
+
+# Mobile Safari| Mobile Safari 4
+Safari 4.0	iOS 4.0	~Z (~i; U; CPU ~i OS 4_0 like Mac OS X; en-us) ~a532.9 ~G ~v4.0.5 ~m8A293 ~s6531.22.7
+
+# Mosaic| Mosaic 2
+NCSA_Mosaic 2.6	SunOS	NCSA_Mosaic/2.6 (X11; SunOS 4.1.3 sun4m)
+
+# Mozilla| Mozilla 5
+# NOTE: very old.
+	SunOS	~Z (X11; U; SunOS sun4u; en-US; rv:1.7) ~g20070606
+
+# MSIE| IE 5
+# NOTE: very old.
+Internet Explorer 5		Mozilla/4.0 (~C; MSIE 5.0b1; Mac_PowerPC)
+
+# NetFront| NetFront 3
+# NOTE: very old version.
+# TODO: There are newer versions though, so look at that.
+	Windows	Mozilla/4.0 (PDA; ~W CE/1.0.1) NetFront/3.0
+
+# Netscape on Windows ME| Netscape 9
+# NOTE: lol
+Firefox 2	Windows	~Z (~W; U; Win 9x 4.90; en-US; rv:1.8.1.8pre) ~g20071015 ~f2.0.0.7 Navigator/9.0
+
+# Netscape on Windows 2000| Netscape 8
+# NOTE: lol
+	Windows 2000	~Z (~W; U; ~W NT 5.0; en-US; rv:1.7.5) ~g20050519 Netscape/8.0.1
+
+# Nokia Browser| NokiaBrowser 7
+# NOTE: very old.
+		~Z (Symbian/3; Series60/5.2 NokiaN8-00/025.007; Profile/MIDP-2.1 Configuration/CLDC-1.1 ) ~a533.4 ~G NokiaBrowser/7.3.1.37 ~M ~s533.4 3gpp-gba
+
+# Oculus Browser| Oculus Browser 3
+Chrome 57	Android 7	~Z (~L; ~A 7.0; SM-G920I Build/NRD90M) ~a537.36 ~G OculusBrowser/3.4.9 SamsungBrowser/4.0 ~c57.0.2987.146 ~M VR ~s537.36
+
+# OmniWeb| OmniWeb 558
+# NOTE: old
+OmniWeb 558		~Z (~I; U; PPC Mac OS X; en-US) ~a85 ~G OmniWeb/v558.48
+
+# Opera > 9.80| Opera 10
+Opera 10.10	Linux	Opera/9.80 (X11; ~L x86_64; U; ~L Mint; en) Presto/2.2.15 ~v10.10
+
+# Opera < 9.80 on Windows| Opera 6
+# NOTE: incorrect but ancient, so whatever.
+Internet Explorer 5	Windows	Mozilla/4.0 (~C; MSIE 5.0; ~W 95) Opera 6.01 [en]
+
+# Opera < 9.80 on OSX| Opera 8
+Opera 8.5		Opera/8.5 (~I; PPC Mac OS X; U; en)
+
+# Opera Mobile| Opera Mobi 11
+Opera 11.50	Android 2.3	Opera/9.80 (~A 2.3.5; ~L; Opera Mobi/ADR-1111101157; U; de) Presto/2.9.201 ~v11.50
+
+# Opera Webkit| Opera 14
+Chrome 25		~Z ~a537.22 ~G ~c25.0.1364.123 ~M ~s537.22 OPR/14.0.1025.52315
+
+# Opera Mini| Opera Mini 5
+Opera Mini 9.80	Java ME	Opera/9.80 (J2ME/MIDP; Opera Mini/5.1.21214/19.916; U; en) Presto/2.5.25
+
+# Opera Mini 8 above on iPhone| Opera Mini 12
+Safari 9.0	iOS 9.2	~Z (~i; CPU ~i OS 9_2 like Mac OS X) ~a601.1.46 ~G OPiOS/12.1.1.98980 ~m13C75 ~s9537.53
+
+# Opera Tablet| Opera Tablet 11
+Opera 11.1	Windows 7	Opera/9.80 (~W NT 6.1; Opera Tablet/15165; U; en) Presto/2.8.149 ~v11.1
+
+# Opera Coast| Opera Coast 5
+Safari 9.0	iOS 9.3	~Z (~i; CPU ~i OS 9_3_2 like Mac OS X; en) ~a601.1.46 ~G Coast/5.04.110603 ~m13F69 ~s7534.48.3
+
+# Opera Touch| Opera Touch 1
+Chrome 68	Android 7	~Z (~L; ~A 7.0; Lenovo P2a42 Build/NRD90N) ~a537.36 ~G ~v4.0 ~c68.0.3440.91 ~M ~s537.36 OPT/1.10.33
+
+# PhantomJS| PhantomJS 1
+PhantomJS 1.9	Windows 7	~Z (~W NT 6.1; WOW64) ~a534.34 ~G PhantomJS/1.9.2 ~s534.34
+
+# Phoenix| Phoenix 0
+	Linux	~Z (X11; U; ~L i686; en-US; rv:1.2b) ~g20021029 Phoenix/0.4
+
+# Polaris| Polaris 6
+# NOTE: really old
+		LG-LX600 Polaris/6.0 MMP/2.0 Profile/MIDP-2.1 Configuration/CLDC-1.1
+
+# QQ| QQBrowser 7
+Chrome 37	Android 4.4	~Z (~L; U; ~A 4.4.4; zh-cn; OPPO R7s Build/KTU84P) ~a537.36 ~G~v4.0 ~c37.0.0.0 MQQBrowser/7.1 ~M ~s537.36
+
+# QupZilla| QupZilla 1
+# NOTE: renamed to Falkon in 2017.
+# TODO: should probably get WebKit version from here?
+	Linux	~Z (X11; ~L x86_64) ~a538.1 ~G QupZilla/1.8.9 ~s538.1
+
+# RockMelt| RockMelt 0
+Chrome 7	Windows 7	~Z (~W; U; ~W NT 6.1; en-US) ~a534.7 ~G RockMelt/0.8.36.78 ~c7.0.517.44 ~s534.7
+
+# Safari| Safari 5
+# NOTE: long-discontinued Windows Safari
+	Windows XP	~Z (~W; U; ~W NT 5.2; en-US) ~a533.17.8 ~G ~v5.0.1 ~s533.17.8
+
+# Safari < 3.0| Safari 2
+# NOTE: ancient.
+		~Z (~I; U; PPC Mac OS X; sv-se) ~a419 ~G ~s419.3
+
+# Samsung Browser| Samsung Browser 4
+Chrome 44	Android 6	~Z (~L; ~A 6.0.1; SAMSUNG-SM-G925A Build/MMB29K) ~a537.36 ~G SamsungBrowser/4.0 ~c44.0.2403.133 ~M ~s537.36
+
+# SeaMonkey| SeaMonkey 2
+# NOTE: very old version.
+	Linux	~Z (X11; U; ~L i686; en-US; rv:1.9.1b4pre) ~g20090405 SeaMonkey/2.0b1pre
+
+# Silk Browser| Silk 1
+# NOTE: curreny versions are based on Chrome, this is an old version.
+	macOS 10.6	~Z (~I; U; Intel Mac OS X 10_6_3; en-us; Silk/1.1.0-84)
+
+# Skyfire| Skyfire 2
+# NOTE: discontinued in 2014
+Safari 4.0	macOS 10.5	~Z (~I; U; Intel Mac OS X 10_5_7; en-us) ~a530.17 ~G ~v4.0 ~s530.17 Skyfire/2.0
+
+# SlimBrowser| Slim undefined
+Internet Explorer 7	Windows XP	Mozilla/4.0 (~C; MSIE 7.0; ~W NT 5.1; Trident/4.0; SlimBrowser)
+
+# Swiftfox| Swiftfox undefined
+Firefox 2	Linux	~Z (X11; U; ~L i686; en-US; rv:1.8.1) ~g20061024 ~f2.0 (Swiftfox)
+
+# Tizen Browser| Tizen Browser 1
+# NOTE: old 2012 Tizen version
+	Tizen 1.0 like Android	~Z (~L; U; Tizen/1.0 like ~A; en-us; ~a534.46 ~G Tizen Browser/1.0 ~M
+
+# UC Browser| UCBrowser 5
+Chrome 54	Windows 7	~Z (~W NT 6.1; WOW64) ~a537.36 ~G ~c54.0.2840.99 UBrowser/5.6.12860.7 ~s537.36
+
+# UC Browser| UCBrowser 11
+# TODO: see if we can more info.
+	Android 6	~Z (~L; U; ~A 6.0.1; en-US; Lenovo P2a42 Build/MMB29M) ~a534.30 ~G ~v4.0 UCBrowser/11.2.0.915 U3/0.8.0 ~M ~s534.30
+
+# UC Browser on Samsung| UCBrowser 8
+# NOTE: old Java version, last release 2014
+		~Z (Java; U; Pt-br; samsung-gt-s5620) UCBrowser8.2.1.144/69/352/UCWEB ~M UNTRUSTED/1.0
+# UC Browser on Nokia| UCBrowser 8
+		~Z (S60V3; U; en-in; NokiaN73)/UC Browser8.4.0.159/28/351/UCWEB ~M
+# UC Browser J2ME| UCBrowser 10
+UCWEB 2.0		UCWEB/2.0 (MIDP-2.0; U; zh-CN; HTC EVO 3D X515m) U2/1.0.0 UCBrowser/10.4.0.558 U2/1.0.0 ~M
+# UC Browser J2ME 2| UCBrowser 7
+	Linux	JUC (~L; U; 2.3.5; zh-cn; GT-I9100; 480*800) UCWEB7.9.0.94/139/800
+
+# WeChat on iOS| WeChat 6
+# NOTE: very old version.
+	iOS 8.4	~Z (~i; CPU ~i OS 8_4_1 like Mac OS X) ~a600.1.4 ~G ~m12H321 MicroMessenger/6.3.6 NetType/WIFI Language/zh_CN
+# WeChat on Android| WeChat 6
+	Android 5.1	~Z (~L; U; ~A 5.1; zh-cn; Lenovo K50-t5 Build/LMY47D) ~a533.1 ~G~v4.0 MQQBrowser/5.4 TBS/025478 ~M ~s533.1 MicroMessenger/6.3.5.50_r1573191.640 NetType/WIFI Language/zh_CN
+
+# Vivaldi| Vivaldi 1
+Chrome 40	Windows Vista	~Z (~W NT 6.0) ~a537.36 ~G ~c40.0.2214.89 Vivaldi/1.0.83.38 ~s537.36
+
+# Yandex| Yandex 1
+Chrome 19	macOS 10.8	~Z (~I; Intel Mac OS X 10_8_2) ~a536.5 ~G YaBrowser/1.0.1084.5402 ~c19.0.1084.5402 ~s536.5
+
+# Puffin| Puffin 6
+Chrome 42	Android 6	~Z (~L; ~A 6.0.1; Lenovo P2a42 Build/MMB29M; en-us) ~a537.36 ~G ~c42.0.2311.135 ~M ~s537.36 Puffin/6.0.8.15804AP
+
+# Microsoft Edge| Edge 12
+Edge 12	Windows 10	~Z (~W NT 10.0; WOW64) ~a537.36 ~G ~c39.0.2171.71 ~s537.36 ~e12.0
+
+# Microsoft Edge on iOS| Edge 42
+Safari 11.0	iOS 11.4	~Z (~i; CPU ~i OS 11_4 like Mac OS X) ~a605.1.15 ~G ~v11.0 EdgiOS/42.1.1.0 ~m15F79 ~s605.1.15
+
+# Microsoft Edge on Android| Edge 42
+Chrome 67	Android 8	~Z (~L; ~A 8.0.0; G8441 Build/47.1.A.12.270) ~a537.36 ~G ~c67.0.3396.123 ~M ~s537.36 EdgA/42.0.0.2529
+
+# Microsoft Edge Chromium| Edge 74
+Chrome 74	Windows 10	~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c74.0.3729.48 ~s537.36 Edg/74.1.96.24
+
+# Iridium| Iridium 43
+Chrome 43	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G Iridium/43.8 ~s537.36 ~c43.0.2357.132
+
+# Firefox iOS| Firefox 1
+Safari 9.0	iOS 9.1	~Z (~i; CPU ~i OS 9_1 like Mac OS X) ~a601.1.46 ~G FxiOS/1.1 ~m13B143 ~s601.1.46
+
+# QQ on iOS| QQ 6
+# TODO
+	iOS 10.0	~Z (~i; CPU ~i OS 10_0_2 like Mac OS X) ~a602.1.50 ~G ~m14A456 QQ/6.5.3.410 V1_IPH_SQ_6.5.3_1_APP_A Pixel/1080 Core/UIWebView NetType/WIFI Mem/26
+
+# QQ on Android| QQ 6
+Chrome 37	Android 6	~Z (~L; ~A 6.0; PRO 6 Build/MRA58K) ~a537.36 ~G ~v4.0 ~c37.0.0.0 ~M MQQBrowser/6.8 TBS/036824 ~s537.36 V1_AND_SQ_6.5.8_422_YYB_D PA QQ/6.5.8.2910 NetType/WIFI WebP/0.3.0 Pixel/1080
+
+# baidu app on iOS| baiduboxapp 11
+# TODO: can probably get it from "P2 12.1.2?"
+	iOS 12.1	~Z (~i; CPU ~i OS 12_1_2 like Mac OS X) ~a605.1.15 ~G ~m16C101 main%2F1.0 baiduboxapp/11.12.0.18 (Baidu; P2 12.1.2)
+
+# baidu app on Android| baiduboxapp 11
+Chrome 63	Android 8.1	~Z (~L; ~A 8.1.0; BKK-AL10 Build/HONORBKK-AL10; wv) ~a537.36 ~G ~v4.0 ~c63.0.3239.83 ~M ~s537.36 T7/11.11 baiduboxapp/11.11.0.0 (Baidu; P1 8.1.0)
+
+# WeChat Desktop for Windows Built-in Browser| WeChat(Win) Desktop 3
+Chrome 39	Windows 7	~Z (~W NT 6.1; WOW64) ~a537.36 ~G ~c39.0.2171.95 ~s537.36 MicroMessenger/6.5.2.501 NetType/WIFI ~WWechat QBCore/3.43.901.400 QQBrowser/9.0.2524.400
+
+# GSA on iOS| GSA 30
+Safari 10.0	iOS 10.3	~Z (~i; CPU ~i OS 10_3_2 like Mac OS X) ~a602.1.50 ~G GSA/30.1.161623614 ~m14F89 ~s602.1
+
+# Sogou Browser| MetaSr 
+Chrome 49	Windows 7	~Z (~W NT 6.1; WOW64) ~a537.36 ~G ~c49.0.2623.221 ~s537.36 SE 2.X MetaSr 1.0
+
+# LieBao Browser| LBBROWSER 
+Chrome 42	Windows 10	~Z (~W NT 10.0; WOW64) ~a537.36 ~G ~c42.0.2311.154 ~s537.36 LBBROWSER
+
+# BaiDu Browser| BIDUBrowser 8
+Chrome 47	Windows 10	~Z (~W NT 10.0; WOW64) ~a537.36 ~G ~c47.0.2526.106 BIDUBrowser/8.7 ~s537.36
+
+# 2345 Browser| 2345Explorer 9
+Chrome 56	Windows 10	~Z (~W NT 10.0; WOW64) ~a537.36 ~G ~c56.0.2924.90 ~s537.36 2345Explorer/9.2.1.17116
+
+# QQBrowserLite| QQBrowserLite 1
+# TODO: this may be incorrect?
+Safari 10.0	macOS 10.12	~Z (~I; Intel Mac OS X 10_12_1) ~a602.2.14 ~G ~v10.0.1 ~s602.2.14 QQBrowserLite/1.1.0
+
+# Brave Browser| Brave 4
+Brave 4.5.16		Brave/4.5.16 CFNetwork/893.13.1 Darwin/17.3.0 (x86_64)

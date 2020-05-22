@@ -1,4 +1,4 @@
-# vim:ts=18
+# vim:ts=20:tw=0
 #
 # Some random stuff that didn't work and needed fixing.
 
@@ -27,6 +27,7 @@ Opera Mini 12.16	Java ME	SAMSUNG-GT-S5611 Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.
 
 Opera Mini 12.16	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/4.4.39001/163.89; U; en) Presto/2.12.423 Version/12.16
 Opera Mini 12.16	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/6.1.27412/163.89; U; en) Presto/2.12.423 Version/12.16
+Firefox 45	Sailfish 3.0	~Z (~L; U; Sailfish 3.0; ~M; rv:45.0) ~g45.0 ~f45.0 SailfishBrowser/1.0
 
 # TODO: WebKit-based, Haiku
 	Haiku	Mozilla/5.0 (Macintosh; Intel Haiku R1 x86) AppleWebKit/608.1.6 (KHTML, like Gecko) WebPositive/1.2 Version/11.1 Safari/608.1.6
@@ -36,12 +37,15 @@ Dillo 3.0		Dillo/3.0.5
 Lynx 2.8.8dev.9		Lynx/2.8.8dev.9 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/2.12.14
 PaleMoon 28.5	Linux	Mozilla/5.0 (X11; Linux i686; rv:60.9) Goanna/4.2 PaleMoon/28.5.0
 PaleMoon 28.8	Windows 10	Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.9) Gecko/20100101 Goanna/4.4 Firefox/68.9 PaleMoon/28.8.4
+# Pale Moon beta versions are called "Basilisk"
+Basilisk 20171113	Linux	~Z (X11; ~L x86_64; rv:55.0) ~g20100101 Goanna/4.0 ~f55.0 Basilisk/20171113
 
 # Uses the same engine as Firefox, so just list it as such.
 Firefox 43	FreeBSD	Mozilla/5.0 (X11; FreeBSD i386; rv:43.0) Gecko/20100101 Firefox/43.0 SeaMonkey/2.40
 Firefox 56	Linux	Mozilla/5.0 (X11; Linux x86_64; rv:56.0; Waterfox) Gecko/20100101 Firefox/56.2.6
 Firefox 56	macOS 10.12	Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:56.0) Gecko/20100101 Firefox/56.0 Waterfox/56.2.13
 Firefox 2	macOS	Mozilla/5.0 (Macintosh; U; Intel Mac OS X; en; rv:1.8.1.14) Gecko/20080409 Camino/1.6 (like Firefox/2.0.0.14)
+Firefox 68	Linux	Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
 
 # Based on WebKit
 Safari 10.0	iOS 10.1	Mozilla/5.0 (iPad; CPU OS 10_1_1 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 YaBrowser/16.11.1.716.11 Mobile/14B100 Safari/602.1
@@ -85,6 +89,7 @@ Opera 12.16	Linux	Opera/9.80 (X11; Linux zvav; U; en) Presto/2.12.423 Version/12
 Opera 12.18	Windows 8	Opera/9.80 (Windows NT 6.2; Win64; x64) Presto/2.12.388 Version/12.18
 Opera 9.64	Windows Vista	Opera/9.64 (Windows NT 6.0; U; zh-cn) Presto/2.1.1
 Opera 9.64	macOS	Opera/9.64 (Macintosh; Intel Mac OS X; U; en) Presto 2.1.1
+# TODO: I think the versions may be incorrect here?
 Opera Mini 12.16	Android	Opera/9.80 (Android; Opera Mini/47.0.2254/170.58; U; az) Presto/2.12.423 Version/12.16
 Opera Mini 12.16	Android	Opera/9.80 (Android; Opera Mini/7.6.40234/170.58; U; ru) Presto/2.12.423 Version/12.16
 Opera Mini 12.16	Windows Phone	Opera/9.80 (Windows Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 Version/12.16

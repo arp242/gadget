@@ -12,6 +12,8 @@ import (
 // Tests are loaded from testdata/* files; Every line is a Tab-Seperated value
 // of <expected browser>\t<expected OS>\t<User-Agent>.
 //
+// Probably best viewed with a tabstop of 22 or some such.
+//
 // Leave a value empty if you expect nothing to be set.
 //
 // Comments can only start at the beginning of a line.
