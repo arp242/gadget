@@ -236,7 +236,7 @@ amaya 9.51		amaya/9.51 libwww/5.4.0
 Python-urllib 2.7		Python-urllib/2.7
 
 # curl-7.28.1
-curl 7.28.1		curl/7.28.1
+curl 7.28		curl/7.28.1
 
 # "Mozilla:5.0 Platform:X11 OS:Linux x86_64 Browser:Chrome-23.0.1271.97 Engine:AppleWebKit-537.11", &OSInfo{"Linux x86_64", "Linux", ""},
 Chrome 23	Linux	~Z (X11; ~L x86_64) ~a537.11 ~G ~c23.0.1271.97 ~s537.11
@@ -334,22 +334,22 @@ Safari 11.0	macOS 10.15	~Z (~I; Intel Mac OS X 10.15) ~a605.1.15 ~G FxiOS/24.1 ~
 Chrome 73	Windows 10	~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G CozyDrive/3.17.0  ~c73.0.3683.119 Electron/5.0.0 ~s537.36
 
 # "Mozilla:5.0 Platform:Linux OS:Android 2.2.2",
-Dalvik 1.2.0	Android 2.2	Dalvik/1.2.0 (~L; U; ~A 2.2.2; 001DL Build/FRG83G)
+Dalvik 1.2	Android 2.2	Dalvik/1.2.0 (~L; U; ~A 2.2.2; 001DL Build/FRG83G)
 
 # "Mozilla:5.0 Platform:Linux OS:Android 2.3.3",
-Dalvik 1.4.0	Android 2.3	Dalvik/1.4.0 (~L; U; ~A 2.3.3; 001HT Build/GRI40)
+Dalvik 1.4	Android 2.3	Dalvik/1.4.0 (~L; U; ~A 2.3.3; 001HT Build/GRI40)
 
 # "Mozilla:5.0 Platform:Linux OS:Android 2.3.4",
-Dalvik 1.4.0	Android 2.3	Dalvik/1.4.0 (~L; U; ~A 2.3.4; 009Z Build/GINGERBREAD)
+Dalvik 1.4	Android 2.3	Dalvik/1.4.0 (~L; U; ~A 2.3.4; 009Z Build/GINGERBREAD)
 
 # "Mozilla:5.0 Platform:Linux OS:Android 4.2.2",
-Dalvik 1.6.0	Android 4.2	Dalvik/1.6.0 (~L; U; ~A 4.2.2; A850 Build/JDQ39) Configuration/CLDC-1.1; Opera Mini/att/4.2
+Dalvik 1.6	Android 4.2	Dalvik/1.6.0 (~L; U; ~A 4.2.2; A850 Build/JDQ39) Configuration/CLDC-1.1; Opera Mini/att/4.2
 
 # "Mozilla:5.0 Platform:Linux OS:Android 4.4.2", &OSInfo{"Android 4.4.2", "Android", "4.4.2"},
-Dalvik 1.6.0	Android 4.4	Dalvik/1.6.0 (~L; U; ~A 4.4.2; ASUS_T00Q Build/KVT49L)/CLDC-1.1
+Dalvik 1.6	Android 4.4	Dalvik/1.6.0 (~L; U; ~A 4.4.2; ASUS_T00Q Build/KVT49L)/CLDC-1.1
 
 # "Mozilla:5.0 Platform:Linux OS:Android 4.0.4",
-Dalvik 1.6.0	Android 4	Dalvik/1.6.0 (~L; U; ~A 4.0.4; W2430 Build/IMM76D)014; Profile/MIDP-2.1 Configuration/CLDC-1
+Dalvik 1.6	Android 4	Dalvik/1.6.0 (~L; U; ~A 4.0.4; W2430 Build/IMM76D)014; Profile/MIDP-2.1 Configuration/CLDC-1
 
 # Android-4.0 Engine:AppleWebKit-537.36
 Chrome 43	Android 5	~Z (~L; ~A 5.0; SM-G900P Build/LRX21T; wv) ~a537.36 ~G ~v4.0 ~c43.0.2357.121 ~M ~s537.36 [FB_IAB/FB4A;FBAV/35.0.0.48.273;]

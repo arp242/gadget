@@ -20,21 +20,21 @@ Chrome 47	Tizen 3.0	~Z (~L; Tizen 3.0; SAMSUNG SM-Z400Y) ~a537.36 ~G SamsungBrow
 	Tizen 2.4	~Z (~L; Tizen 2.4; SAMSUNG SM-Z200Y) ~a537.3 ~G SamsungBrowser/1.1 ~M ~s537.3
 Chrome 56	Tizen 4.0	~Z (SMART-TV; ~L; Tizen 4.0) ~a537.36 ~G SamsungBrowser/2.1 ~c56.0.2924.0 TV ~s537.36
 Chrome 47	Tizen 3.0	~Z (SMART-TV; ~L; Tizen 3.0) ~a537.36 ~G SamsungBrowser/2.0 ~c47.0.2526.69 TV safari/537.36
-Opera Mini 12.16	Tizen	Opera/9.80 (Tizen; Opera Mini/7.7.18/163.89; U; en) Presto/2.12.423 ~v12.16
+Opera Mini 7.7	Tizen	Opera/9.80 (Tizen; Opera Mini/7.7.18/163.89; U; en) Presto/2.12.423 ~v12.16
 
-Opera Mini 12.16	Java ME	Opera/9.80 (J2ME/MIDP; Opera Mini/4.1.15231/170.58; U; en) Presto/2.12.423 ~v12.16
-Opera Mini 12.16	Java ME	SAMSUNG-GT-S5611 Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.34814/174.78; U; tr) Presto/2.12.423 ~v12.16
+Opera Mini 4.1	Java ME	Opera/9.80 (J2ME/MIDP; Opera Mini/4.1.15231/170.58; U; en) Presto/2.12.423 ~v12.16
+Opera Mini 7.1	Java ME	SAMSUNG-GT-S5611 Opera/9.80 (J2ME/MIDP; Opera Mini/7.1.34814/174.78; U; tr) Presto/2.12.423 ~v12.16
 
-Opera Mini 12.16	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/4.4.39001/163.89; U; en) Presto/2.12.423 ~v12.16
-Opera Mini 12.16	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/6.1.27412/163.89; U; en) Presto/2.12.423 ~v12.16
+Opera Mini 4.4	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/4.4.39001/163.89; U; en) Presto/2.12.423 ~v12.16
+Opera Mini 6.1	MAUI Runtime	Opera/9.80 (MAUI Runtime; Opera Mini/6.1.27412/163.89; U; en) Presto/2.12.423 ~v12.16
 Firefox 45	Sailfish 3.0	~Z (~L; U; Sailfish 3.0; ~M; rv:45.0) ~g45.0 ~f45.0 SailfishBrowser/1.0
 
-# TODO: WebKit-based, Haiku
+# TODO: WebKit-based
 	Haiku	~Z (~I; Intel Haiku R1 x86) ~a608.1.6 ~G WebPositive/1.2 ~v11.1 ~s608.1.6
 
 # Some smaller browsers.
 Dillo 3.0		Dillo/3.0.5
-Lynx 2.8.8dev.9		Lynx/2.8.8dev.9 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/2.12.14
+Lynx 2.8		Lynx/2.8.8dev.9 libwww-FM/2.14 SSL-MM/1.4.1 GNUTLS/2.12.14
 PaleMoon 28.5	Linux	~Z (X11; ~L i686; rv:60.9) Goanna/4.2 PaleMoon/28.5.0
 PaleMoon 28.8	Windows 10	~Z (~W NT 10.0; Win64; x64; rv:68.9) ~g20100101 Goanna/4.4 ~f68.9 PaleMoon/28.8.4
 # Pale Moon beta versions are called "Basilisk"
@@ -48,20 +48,22 @@ Firefox 2	macOS	~Z (~I; U; Intel Mac OS X; en; rv:1.8.1.14) ~g20080409 Camino/1.
 Firefox 68	Linux	~Z (X11; ~L x86_64; rv:68.0) ~g20100101 ~f68.0
 
 # Based on WebKit
+# TODO: these aren't recognized properly as everyone adds "AppleWebKit/.." so
+# we can't trust it, even when it's accurate.
 Safari 10.0	iOS 10.1	~Z (iPad; CPU OS 10_1_1 like Mac OS X) ~a602.1.50 ~G ~v10.0 YaBrowser/16.11.1.716.11 ~m14B100 ~s602.1
-# TODO
-# Safari 13	FreeBSD	~Z (X11; FreeBSD amd64) ~a605.1.15 ~G ~v13.0 ~s605.1.15 Midori/6
-# Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.21 (KHTML, like Gecko) konqueror/4.14.26 Safari/537.21
-#
-# Mozilla/5.0 (Windows NT 6.2) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.81
-# Mozilla/5.0 (Macintosh; Intel Haiku R1 x86) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.01
-# Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.01
-# Mozilla/5.0 (Windows NT 6.2; Win64; x64) AppleWebKit/602.1 (KHTML, like Gecko) Otter/1.0.81
-# Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0 Safari/605.1.15 Epiphany/605.1.15
-# Mozilla/5.0 (X11; Ubuntu; Linux x86_64) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Safari/605.1.15 Epiphany/605.1.15
+	FreeBSD	~Z (X11; FreeBSD amd64) ~a605.1.15 ~G ~v13.0 ~s605.1.15 Midori/6
+	Haiku	~Z (~I; Intel Haiku R1 x86) ~a602.1 ~G Otter/1.0.01
+	Haiku	~Z (~I; Intel Haiku R1 x86) ~a608.1.6 ~G WebPositive/1.2 ~v11.1 ~s608.1.6
+	Linux	~Z (X11; ~L x86_64) ~a537.21 ~G konqueror/4.14.26 ~s537.21
+	Linux	~Z (X11; ~L x86_64) ~a602.1 ~G Otter/1.0.01
+	Linux	~Z (X11; ~L x86_64) ~a605.1.15 ~G ~v13.0 ~s605.1.15 Epiphany/605.1.15
+	Linux Ubuntu	~Z (X11; Ubuntu; ~L x86_64) ~a605.1.15 ~G ~v11.0 ~s605.1.15 Epiphany/605.1.15
+	Windows 8	~Z (~W NT 6.2) ~a602.1 ~G Otter/1.0.81
+	Windows 8	~Z (~W NT 6.2; Win64; x64) ~a602.1 ~G Otter/1.0.81
 
 # QtWebEngine is based on Blink/Chrome.
-# TODO: maybe map QtWebEngine versions to Chrome versions, like we do for AppleWebKit.
+# TODO: maybe map QtWebEngine versions to Chrome versions, like we do for
+# AppleWebKit?
 Chrome 69	Windows 10	~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G QtWebEngine/5.12.3 ~c69.0.3497.128 ~s537.36
 	Linux	~Z (X11; ~L x86_64) ~a602.1 ~G qutebrowser/1.7.0 ~v9.0 ~s602.1
 	OpenBSD	~Z (X11; OpenBSD) ~a538.1 ~G qutebrowser/0.11.1 ~v7.0 ~s538.1
@@ -70,12 +72,6 @@ Chrome 77	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G Falkon/3.1.0 ~c77.0.3865.129 ~s5
 Chrome 65	Linux	~Z (X11; ~L x86_64) ~a537.36 ~G QtWebEngine/5.11.3 ~c65.0.3325.230 ~s537.36 Konqueror (WebEnginePart)
 Chrome 73	FreeBSD	~Z (X11; FreeBSD amd64; ~L x86_64) ~a537.36 ~G ~c73.0.3683.105 Otter/1.0.81
 Chrome 80	Android 9	~Z (~L; arm_64; ~A 9; vivo 1906) ~a537.36 ~G ~c80.0.3987.132 YaBrowser/20.3.3.92.00 SA/1 ~M ~s537.36
-
-# BlackBerry
-# TODO: really rare, so probably not really worth supporting.
-# Mozilla/5.0 (BB10; Kbd) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.2.0.1803 Mobile Safari/537.35+
-# Mozilla/5.0 (BB10; Kbd) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.3.2.2876 Mobile Safari/537.35+
-# Mozilla/5.0 (BB10; Touch) AppleWebKit/537.35+ (KHTML, like Gecko) Version/10.3.3.3216 Mobile Safari/537.35+
 
 # Few IE strings that gave me problems.
 Internet Explorer 10	Windows 7	~Z (~C; MSIE 10.0; ~W NT 6.1; WOW64; Trident/6.0)
@@ -89,11 +85,10 @@ Opera 12.16	Linux	Opera/9.80 (X11; ~L zvav; U; en) Presto/2.12.423 ~v12.16
 Opera 12.18	Windows 8	Opera/9.80 (~W NT 6.2; Win64; x64) Presto/2.12.388 ~v12.18
 Opera 9.64	Windows Vista	Opera/9.64 (~W NT 6.0; U; zh-cn) Presto/2.1.1
 Opera 9.64	macOS	Opera/9.64 (~I; Intel Mac OS X; U; en) Presto 2.1.1
-# TODO: I think the versions may be incorrect here?
-Opera Mini 12.16	Android	Opera/9.80 (~A; Opera Mini/47.0.2254/170.58; U; az) Presto/2.12.423 ~v12.16
-Opera Mini 12.16	Android	Opera/9.80 (~A; Opera Mini/7.6.40234/170.58; U; ru) Presto/2.12.423 ~v12.16
-Opera Mini 12.16	Windows Phone	Opera/9.80 (~W Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 ~v12.16
-Opera Mini 12.16	Windows Phone	Opera/9.80 (~W Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 ~v12.16
+Opera Mini 47.0	Android	Opera/9.80 (~A; Opera Mini/47.0.2254/170.58; U; az) Presto/2.12.423 ~v12.16
+Opera Mini 7.6	Android	Opera/9.80 (~A; Opera Mini/7.6.40234/170.58; U; ru) Presto/2.12.423 ~v12.16
+Opera Mini 7.6	Windows Phone	Opera/9.80 (~W Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 ~v12.16
+Opera Mini 7.6	Windows Phone	Opera/9.80 (~W Phone; Opera Mini/7.6.8/170.67; U; ru) Presto/2.12.423 ~v12.16
 
 # Wrapped in quotes.
 Chrome 62	Linux	'~Z (X11; ~L x86_64) ~a537.36 ~G Chromium/62.0.3202.94 ~s537.36'

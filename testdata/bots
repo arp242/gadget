@@ -97,9 +97,9 @@ Googlebot 2.1		Googlebot/2.1 (+http://www.googlebot.com/bot.html)
 #		Ruby
 #		Wget/1.12 (linux-gnu)
 #		Wget/1.13.4 (linux-gnu)
-curl 7.19.7		curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.15.3 zlib/1.2.3 libidn/1.18 libssh2/1.4.2
-curl 7.35.0		curl/7.35.0
-python-requests 2.2.1		python-requests/2.2.1 CPython/2.7.6 ~L/3.13.0-24-generic
+curl 7.19		curl/7.19.7 (x86_64-redhat-linux-gnu) libcurl/7.19.7 NSS/3.15.3 zlib/1.2.3 libidn/1.18 libssh2/1.4.2
+curl 7.35		curl/7.35.0
+python-requests 2.2		python-requests/2.2.1 CPython/2.7.6 ~L/3.13.0-24-generic
 #		~Z (X11; ~L x86_64) ~a537.36 ~G Headless~c60.0.3095.0 ~s537.36 SeoSiteCheckup (https://seositecheckup.com)
 #		~Z (X11; ~L x86_64) ~a537.36 ~G Headless~c68.0.3440.106 ~s537.36
 #		~Z (X11; ~L x86_64) ~a537.36 ~G Headless~c69.0.3497.81 ~s537.36

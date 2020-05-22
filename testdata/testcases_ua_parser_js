@@ -161,7 +161,7 @@ Firefox 3	Linux	~Z (X11; U; ~L i686; en-US; rv:1.9.0.3) ~g2008100716 ~f3.0.3 Flo
 
 # iCab| iCab 2
 # NOTE: very old version before rewrite to WebKit
-iCab 2.9.5		iCab/2.9.5 (~I; U; PPC; Mac OS X)
+iCab 2.9		iCab/2.9.5 (~I; U; PPC; Mac OS X)
 
 # IEMobile| IEMobile 7
 # NOTE: probably not worth getting the old Windows CE version from this string.
@@ -200,7 +200,7 @@ Chrome 51	Android 5	~Z (~L; ~A 5.0; ASUS_Z00AD Build/LRX21V; wv) ~a537.36 ~G ~v4
 Firefox 3	Windows XP	~Z (~W; U; ~W NT 5.1; en-US; rv:1.9.1.2) ~g20090804 ~f3.5.2 Lunascape/5.1.4.5
 
 # Lynx| Lynx 2
-Lynx 2.8.5dev.16		Lynx/2.8.5dev.16 libwww-FM/2.14 SSL-MM/1.4.1 OpenSSL/0.9.6b
+Lynx 2.8		Lynx/2.8.5dev.16 libwww-FM/2.14 SSL-MM/1.4.1 OpenSSL/0.9.6b
 
 # Maemo Browser| Maemo Browser 1
 # NOTE: very old version
@@ -212,7 +212,7 @@ Internet Explorer 7	Windows XP	Mozilla/4.0 (~C; MSIE 7.0; ~W NT 5.1; SV1; Maxtho
 
 # Midori| Midori 0
 # NOTE: very old version.
-Midori 0.2.2	Linux	Midori/0.2.2 (X11; ~L i686; U; en-us) WebKit/531.2+
+Midori 0.2	Linux	Midori/0.2.2 (X11; ~L i686; U; en-us) WebKit/531.2+
 
 # Minimo| Minimo 0
 # NOTE: "Mini Mozilla"; last release 2007
@@ -277,7 +277,7 @@ Opera 11.50	Android 2.3	Opera/9.80 (~A 2.3.5; ~L; Opera Mobi/ADR-1111101157; U; 
 Chrome 25		~Z ~a537.22 ~G ~c25.0.1364.123 ~M ~s537.22 OPR/14.0.1025.52315
 
 # Opera Mini| Opera Mini 5
-Opera Mini 9.80	Java ME	Opera/9.80 (J2ME/MIDP; Opera Mini/5.1.21214/19.916; U; en) Presto/2.5.25
+Opera Mini 5.1	Java ME	Opera/9.80 (J2ME/MIDP; Opera Mini/5.1.21214/19.916; U; en) Presto/2.5.25
 
 # Opera Mini 8 above on iPhone| Opera Mini 12
 Safari 9.0	iOS 9.2	~Z (~i; CPU ~i OS 9_2 like Mac OS X) ~a601.1.46 ~G OPiOS/12.1.1.98980 ~m13C75 ~s9537.53
@@ -432,4 +432,4 @@ Chrome 56	Windows 10	~Z (~W NT 10.0; WOW64) ~a537.36 ~G ~c56.0.2924.90 ~s537.36 
 Safari 10.0	macOS 10.12	~Z (~I; Intel Mac OS X 10_12_1) ~a602.2.14 ~G ~v10.0.1 ~s602.2.14 QQBrowserLite/1.1.0
 
 # Brave Browser| Brave 4
-Brave 4.5.16		Brave/4.5.16 CFNetwork/893.13.1 Darwin/17.3.0 (x86_64)
+Brave 4.5		Brave/4.5.16 CFNetwork/893.13.1 Darwin/17.3.0 (x86_64)

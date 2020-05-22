@@ -56,9 +56,10 @@ var (
 		"608.2.11":  "13.0",
 	}
 
-	// Meaningless product strings to ignore.
+	// Meaningless product strings to ignore; these are never a browser.
 	ignoreProduct = []string{"Mozilla/", "Gecko/", "AppleWebKit/",
-		"(KHTML,", "like", "Gecko)"}
+		"(KHTML,", "like", "Gecko)", "Version/", "Mobile/", "Safari/",
+		"QtWebEngine/"}
 
 	// Known browsers that are not based on Chrome, Safari, or Firefox but may
 	// identify as Chrome, Safari, or Firefox.
@@ -196,6 +197,9 @@ func (u UserAgent) OS() string {
 func Parse(uaHeader string) UserAgent {
 	p := parse(uaHeader)
 	ua := UserAgent{}
+	if len(p.products) == 0 {
+		return ua
+	}
 
 	// Get OS info.
 	isIE := false
@@ -349,12 +353,6 @@ func Parse(uaHeader string) UserAgent {
 
 	bloop:
 		for _, s := range p.products {
-			for _, ig := range ignoreProduct {
-				if s == ig {
-					continue bloop
-				}
-			}
-
 			switch {
 			case strings.HasPrefix(s, "Chrome/"):
 				// EdgeHTML identifies as Chrome, even though it's not.
@@ -389,12 +387,15 @@ func Parse(uaHeader string) UserAgent {
 				break bloop
 
 			case strings.HasPrefix(s, "Opera/"):
-				if strings.Contains(uaHeader, "Opera Mini/") {
-					ua.BrowserName = "Opera Mini"
-				} else {
-					ua.BrowserName = "Opera"
+				for _, s2 := range p.system {
+					if strings.HasPrefix(s2, "Opera Mini/") {
+						ua.BrowserName = "Opera Mini"
+						ua.BrowserVersion = maxVersion(after(s2, 11), 2, false)
+						break bloop
+					}
 				}
 
+				ua.BrowserName = "Opera"
 				for _, s2 := range p.products {
 					if strings.HasPrefix(s2, "Version/") {
 						ua.BrowserVersion = maxVersion(after(s2, 8), 2, false)
@@ -442,63 +443,28 @@ func Parse(uaHeader string) UserAgent {
 			}
 		}
 
-		// TODO: maybe look at system, too?
 		if ua.BrowserName == "" {
+			// Only look at the first product; reading over ignored ones seems
+			// to mostly result in noise, rather than helpful results.
 			first := p.products[0]
 
-			// Give up.
-			// TODO: maybe try going forward? I don't know ... seems to give me
-			// more false results than anything else.
 			for _, ig := range ignoreProduct {
 				if strings.HasPrefix(first, ig) {
 					return ua
 				}
 			}
 
+			// No /, no browser.
 			s := strings.IndexRune(first, '/')
 			if s > 0 && s < len(first)-1 && isNumber(first[s+1]) && isLetter(first[s-1]) {
 				ua.BrowserName = first[:s]
-				ua.BrowserVersion = first[s+1:]
+				ua.BrowserVersion = maxVersion(first[s+1:], 2, false)
 			}
 		}
+
 	}
 
 	return ua
-}
-
-func isNumber(s byte) bool { return s >= 0x30 && s <= 0x39 }
-func isLetter(s byte) bool { return (s >= 0x41 && s <= 0x5a) || (s >= 0x61 && s <= 0x7a) }
-func after(s string, n int) string { // Safer string slicing.
-	if n < 0 {
-		return ""
-	}
-	if len(s) > n {
-		return s[n:]
-	}
-	return ""
-}
-
-// Set maximum version level:
-//
-// n=1: 75.0  -> 75
-// n=2: 5.0.5 -> 5.0
-func maxVersion(v string, n int, trimZero bool) string {
-	if len(v) > 0 && !isNumber(v[0]) {
-		return ""
-	}
-
-	if strings.Count(v, ".") >= n {
-		s := strings.Split(v, ".")
-		if trimZero && s[n-1] == "0" {
-			n -= 1
-		}
-		return strings.Join(s[:n], ".")
-	}
-
-	if trimZero && strings.HasSuffix(v, ".0") {
-		return v[:len(v)-2]
-	}
-	return v
 }
 
 type props struct {
@@ -534,4 +500,39 @@ func parse(ua string) props {
 	}
 
 	return p
+}
+
+func isNumber(s byte) bool { return s >= 0x30 && s <= 0x39 }
+func isLetter(s byte) bool { return (s >= 0x41 && s <= 0x5a) || (s >= 0x61 && s <= 0x7a) }
+func after(s string, n int) string { // Safer string slicing.
+	if n < 0 {
+		return ""
+	}
+	if len(s) > n {
+		return s[n:]
+	}
+	return ""
+}
+
+// Set maximum version level:
+//
+// n=1: 75.0  -> 75
+// n=2: 5.0.5 -> 5.0
+func maxVersion(v string, n int, trimZero bool) string {
+	if len(v) > 0 && !isNumber(v[0]) {
+		return ""
+	}
+
+	if strings.Count(v, ".") >= n {
+		s := strings.Split(v, ".")
+		if trimZero && s[n-1] == "0" {
+			n -= 1
+		}
+		return strings.Join(s[:n], ".")
+	}
+
+	if trimZero && strings.HasSuffix(v, ".0") {
+		return v[:len(v)-2]
+	}
+	return v
 }
