@@ -71,8 +71,35 @@ var (
 )
 
 var (
+	/* sed to do the same:
+
+	sed \
+		-e 's!~!~~!g;' \
+		-e 's!Android!~A!g;' \
+		-e 's!Chrome/!~c!g;' \
+		-e 's!compatible!~C!g;' \
+		-e 's!Edge/!~e!g;' \
+		-e 's!Firefox/!~f!g;' \
+		-e 's!Gecko/!~g!g;' \
+		-e 's!(KHTML, like Gecko)!~G!g;' \
+		-e 's!iPhone!~i!g;' \
+		-e 's!Macintosh!~I!g;' \
+		-e 's!AppleWebKit/!~a!g;' \
+		-e 's!Linux!~L!g;' \
+		-e 's!Mobile/!~m!g;' \
+		-e 's!Mobile!~M!g;' \
+		-e 's!Safari/!~s!g;' \
+		-e 's!Version/!~v!g;' \
+		-e 's!Windows!~W!g;' \
+		-e 's!Mozilla/5.0 !~Z !g;' \
+		< /dev/stdin
+
+		To replace all cases in a test file, save it to "sort" and do something like:
+		:%s/\v(\t(.*)?\t)(.*)/\=submatch(1) . system('short', submatch(3))/
+	*/
+
 	uaShortener = strings.NewReplacer(
-		"~", "~~", // This is so original ~ are preserved and can be decoded losslessly.
+		"~", "~~", // Preserve ~ and decode lossly.
 		"Android", "~A",
 		"Chrome/", "~c",
 		"compatible", "~C",
@@ -84,13 +111,11 @@ var (
 		"Macintosh", "~I",
 		"AppleWebKit/", "~a",
 		"Linux", "~L",
-		"Mobile/", "~m",
-		"Mobile", "~M",
+		"Mobile/", "~m", "Mobile", "~M",
 		"Safari/", "~s",
 		"Version/", "~v",
 		"Windows", "~W",
-		"Mozilla/5.0 ", "~Z ", // This is to replace the prefix
-	)
+		"Mozilla/5.0 ", "~Z ")
 
 	// shortUADecoder is the inverse of uaShortener.
 	shortUADecoder = strings.NewReplacer(
@@ -106,13 +131,11 @@ var (
 		"~I", "Macintosh",
 		"~a", "AppleWebKit/",
 		"~L", "Linux",
-		"~m", "Mobile/",
-		"~M", "Mobile",
+		"~m", "Mobile/", "~M", "Mobile",
 		"~s", "Safari/",
 		"~v", "Version/",
 		"~W", "Windows",
-		"~Z ", "Mozilla/5.0 ",
-	)
+		"~Z ", "Mozilla/5.0 ")
 )
 
 // Shorten a User-Agent string by replacing common strings with small tokens.

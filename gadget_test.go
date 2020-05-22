@@ -45,7 +45,7 @@ func TestParse(t *testing.T) {
 					if len(s) != 3 {
 						t.Fatalf("Malformed line: %q\n%#v", line, s)
 					}
-					got := Parse(s[2])
+					got := Parse(Unshorten(s[2]))
 					if got.Browser() == s[0] && got.OS() == s[1] {
 						return
 					}
