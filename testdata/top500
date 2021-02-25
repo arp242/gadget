@@ -219,8 +219,8 @@ Safari 13.0	iOS 13.3	~Z (~i; CPU ~i OS 13.3 like Mac OS X) ~a605.1.15 ~G ~v13.0.
 Safari 13.0	iOS 13.3	~Z (~i; CPU ~i OS 13.3.1 like Mac OS X) ~a605.1.15 ~G ~v13.0.5 ~m15E148 ~s604.1
 
 # Bots
-BingPreview 1.0b	iOS 7.0	~Z (~i; CPU ~i OS 7_0 like Mac OS X) ~a537.51.1 ~G ~v7.0 ~m11A465 ~s9537.53 BingPreview/1.0b
-BingPreview 1.0b	Windows 7	~Z (~W NT 6.1; WOW64) ~a534+ ~G BingPreview/1.0b
+BingPreview 1.0	iOS 7.0	~Z (~i; CPU ~i OS 7_0 like Mac OS X) ~a537.51.1 ~G ~v7.0 ~m11A465 ~s9537.53 BingPreview/1.0b
+BingPreview 1.0	Windows 7	~Z (~W NT 6.1; WOW64) ~a534+ ~G BingPreview/1.0b
 Chrome 78	macOS 10.7	~Z (~I; Intel Mac OS X 10_7_3) ~a537.36 (KHTML, like Gecko, Mediapartners-Google) ~c78.0.3904.74 ~s537.36
 Chrome 78	Android 4	~Z (~L; ~A 4.0.4; Galaxy Nexus Build/IMM76B) ~a537.36 (KHTML, like Gecko; Mediapartners-Google) ~c78.0.3904.74 ~M ~s537.36
 Chrome 79	Android 4	~Z (~L; ~A 4.0.4; Galaxy Nexus Build/IMM76B) ~a537.36 (KHTML, like Gecko; Mediapartners-Google) ~c79.0.3945.120 ~M ~s537.36

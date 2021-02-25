@@ -340,7 +340,7 @@ Firefox 2	Linux	~Z (X11; U; ~L i686; en-US; rv:1.8.1) ~g20061024 ~f2.0 (Swiftfox
 
 # Tizen Browser| Tizen Browser 1
 # NOTE: old 2012 Tizen version
-	Tizen 1.0 like Android	~Z (~L; U; Tizen/1.0 like ~A; en-us; ~a534.46 ~G Tizen Browser/1.0 ~M
+	Tizen 1.0	~Z (~L; U; Tizen/1.0 like ~A; en-us; ~a534.46 ~G Tizen Browser/1.0 ~M
 
 # UC Browser| UCBrowser 5
 Chrome 54	Windows 7	~Z (~W NT 6.1; WOW64) ~a537.36 ~G ~c54.0.2840.99 UBrowser/5.6.12860.7 ~s537.36

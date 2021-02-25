@@ -59,7 +59,7 @@ facebookplatform 1.0		facebookplatform/1.0 (+http://developers.facebook.com)
 		Facebot
 
 # NutchCVS
-NutchCVS 0.8-dev		NutchCVS/0.8-dev (Nutch; http://lucene.apache.org/nutch/bot.html; nutch-agent@lucene.apache.org)
+NutchCVS 0.8		NutchCVS/0.8-dev (Nutch; http://lucene.apache.org/nutch/bot.html; nutch-agent@lucene.apache.org)
 
 # MJ12bot-v1.2.4
 		~Z (~C; MJ12bot/v1.2.4; http://www.majestic12.co.uk/bot.php?+)

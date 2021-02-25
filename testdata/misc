@@ -2,6 +2,8 @@
 #
 # Some random stuff that didn't work and needed fixing.
 
+Firefox 1	OpenBSD	~Z (X11; OpenBSD amd64; rv:69.0) ~g20100101 ~f1je-bent-een-lul
+
 # Some smaller operating systems
 Firefox 69	OpenBSD	~Z (X11; OpenBSD amd64; rv:69.0) ~g20100101 ~f69.0
 Chrome 79	OpenBSD	~Z (X11; OpenBSD amd64; ~L x86_64) ~a537.36 ~G ~c79.0.3945.130 ~s537.36
@@ -98,3 +100,8 @@ Opera Mini 7.6	Windows Phone	Opera/9.80 (~W Phone; Opera Mini/7.6.8/170.67; U; r
 Chrome 62	Linux	'~Z (X11; ~L x86_64) ~a537.36 ~G Chromium/62.0.3202.94 ~s537.36'
 		'~Z (~C; DuckDuckBot-Https/1.1; https://duckduckgo.com/duckduckbot)'
 Chrome 99999	Linux	'~Z (X11; ~L x86_64) ~a537.36 ~G ~c99999.0.3578.98 ~s537.36'
+
+# Weird Android versions with junk after version number.
+Chrome 81	Android 9	~Z (~L; ~A 9 by @Rashiid Malyk; Redmi 5 Plus) ~a537.36 ~G ~c81.0.4044.111 ~M ~s537.36
+Chrome 57	Android 9	~Z (~L; U; ~A 9zh-cn; BKL-AL00 Build/HUAWEIBKL-AL00) ~a537.36 ~G~v4.0 ~c57.0.2987.132 MQQBrowser/8.1 ~M ~s537.36
+Snapchat 10.88	Android 9	Snapchat/10.88.5.72 (SM-G950F; ~A 9#G950FXXU9DTF1#28; gzip) V/MUSHROOM

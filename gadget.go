@@ -285,7 +285,7 @@ func Parse(uaHeader string) UserAgent {
 				break oloop
 			case strings.HasPrefix(s, "Tizen"):
 				ua.OSName = "Tizen"
-				ua.OSVersion = after(s, 6)
+				ua.OSVersion = toNumber(after(s, 6))
 				break oloop
 			case strings.HasPrefix(s, "PlayStation 4"):
 				ua.OSName = "PlayStation 4"
@@ -529,14 +529,29 @@ func after(s string, n int) string { // Safer string slicing.
 	return ""
 }
 
+// Convert a value to just a number:
+//
+// "1"          → "1"
+// "1.1.6"      → "1.1.6"
+// "1.5.6BETA4" → "1.5.6"
+func toNumber(v string) string {
+	var b strings.Builder
+	for _, r := range v {
+		if !(r == '.' || (r >= '0' && r <= '9')) {
+			break
+		}
+		b.WriteRune(r)
+	}
+
+	return b.String()
+}
+
 // Set maximum version level:
 //
-// n=1: 75.0  -> 75
-// n=2: 5.0.5 -> 5.0
+// n=1: 75.0  → 75
+// n=2: 5.0.5 → 5.0
 func maxVersion(v string, n int, trimZero bool) string {
-	if len(v) > 0 && !isNumber(v[0]) {
-		return ""
-	}
+	v = toNumber(v)
 
 	if strings.Count(v, ".") >= n {
 		s := strings.Split(v, ".")
