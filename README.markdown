@@ -52,7 +52,7 @@ in [GoatCounter][gc], where you typically don't really care if someone is using
 Opera or Chrome, but just want to know which browser engines your customers are
 using and you need to support.
 
-[isbot]: https://github.com/zgoat/isbot
+[isbot]: https://github.com/arp242/isbot
 [gc]: https://github.com/zgoat/goatcounter
 
 ---
