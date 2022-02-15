@@ -105,3 +105,9 @@ Chrome 99999	Linux	'~Z (X11; ~L x86_64) ~a537.36 ~G ~c99999.0.3578.98 ~s537.36'
 Chrome 81	Android 9	~Z (~L; ~A 9 by @Rashiid Malyk; Redmi 5 Plus) ~a537.36 ~G ~c81.0.4044.111 ~M ~s537.36
 Chrome 57	Android 9	~Z (~L; U; ~A 9zh-cn; BKL-AL00 Build/HUAWEIBKL-AL00) ~a537.36 ~G~v4.0 ~c57.0.2987.132 MQQBrowser/8.1 ~M ~s537.36
 Snapchat 10.88	Android 9	Snapchat/10.88.5.72 (SM-G950F; ~A 9#G950FXXU9DTF1#28; gzip) V/MUSHROOM
+
+# Make sure 3-digit versions work.
+# Note: Chrome may "pin" the version to 99:
+# https://hacks.mozilla.org/2022/02/version-100-in-chrome-and-firefox/
+Chrome 100	Windows 10	~Z (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.1.4606.54 Safari/537.36
+Firefox 100	macOS 10.15	~Z (Macintosh; Intel Mac OS X 10.15; rv:100.0) Gecko/20100101 Firefox/100.0
