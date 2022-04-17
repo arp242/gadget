@@ -6,8 +6,8 @@ import (
 	"zgo.at/gadget"
 )
 
-func ExampleParse() {
-	ua := gadget.Parse(`Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0`)
+func ExampleParseUA() {
+	ua := gadget.ParseUA(`Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:73.0) Gecko/20100101 Firefox/73.0`)
 
 	fmt.Println(ua.String())  // "Firefox 73 on Windows 10"
 	fmt.Println(ua.Browser()) // "Firefox 73"
@@ -21,9 +21,9 @@ func ExampleParse() {
 
 	// Helper to shorten the UA string while remaining readable:
 	uaHeader := `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4029.0 Safari/537.36`
-	short := gadget.Shorten(uaHeader)
-	fmt.Println(short)                               // ~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c81.0.4029.0 ~s537.36
-	fmt.Println(gadget.Unshorten(short) == uaHeader) // true
+	short := gadget.ShortenUA(uaHeader)
+	fmt.Println(short)                                 // ~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c81.0.4029.0 ~s537.36
+	fmt.Println(gadget.UnshortenUA(short) == uaHeader) // true
 
 	// Output:
 	// Firefox 73 on Windows 10

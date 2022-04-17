@@ -19,7 +19,7 @@ import (
 // Comments can only start at the beginning of a line.
 //
 // The test name is <filename>/<line number>.
-func TestParse(t *testing.T) {
+func TestParseUA(t *testing.T) {
 	files, err := ioutil.ReadDir("./testdata")
 	if err != nil {
 		t.Fatal(err)
@@ -47,7 +47,7 @@ func TestParse(t *testing.T) {
 					if len(s) != 3 {
 						t.Fatalf("Malformed line: %q\n%#v", line, s)
 					}
-					got := Parse(Unshorten(s[2]))
+					got := ParseUA(UnshortenUA(s[2]))
 					if got.Browser() == s[0] && got.OS() == s[1] {
 						return
 					}
@@ -81,7 +81,7 @@ func TestMalformed(t *testing.T) {
 
 	for i, s := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			Parse(s)
+			ParseUA(s)
 		})
 	}
 }
@@ -132,7 +132,7 @@ func TestAfter(t *testing.T) {
 	}
 }
 
-func TestShorten(t *testing.T) {
+func TestShortenUA(t *testing.T) {
 	tests := []struct {
 		ua, short string
 	}{
@@ -206,12 +206,12 @@ func TestShorten(t *testing.T) {
 
 	for i, tt := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			short := Shorten(tt.ua)
+			short := ShortenUA(tt.ua)
 			if short != tt.short {
 				t.Errorf("Shorten\ngot:  %q\nwant: %q", short, tt.short)
 			}
 
-			unshort := Unshorten(short)
+			unshort := UnshortenUA(short)
 			if unshort != tt.ua {
 				t.Errorf("Unshorten\ngot:  %q\nwant: %q", unshort, tt.ua)
 			}
@@ -219,7 +219,7 @@ func TestShorten(t *testing.T) {
 	}
 }
 
-func BenchmarkParse(b *testing.B) {
+func BenchmarkParseUA(b *testing.B) {
 	var list []string
 	fp, err := os.Open("./testdata/top500")
 	if err != nil {
@@ -240,6 +240,6 @@ func BenchmarkParse(b *testing.B) {
 	b.ReportAllocs()
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		Parse(list[n%len(list)])
+		ParseUA(list[n%len(list)])
 	}
 }

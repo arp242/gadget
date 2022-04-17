@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-func TestNaughty(t *testing.T) {
+func TestNaughtyUA(t *testing.T) {
 	var tests []string
 	err := json.Unmarshal(naughtyStrings, &tests)
 	if err != nil {
@@ -15,7 +15,7 @@ func TestNaughty(t *testing.T) {
 
 	for i, s := range tests {
 		t.Run(fmt.Sprintf("%d", i), func(t *testing.T) {
-			ua := Parse(s)
+			ua := ParseUA(s)
 			if ua.Browser() != "" {
 				t.Errorf("browser: %q", ua.Browser())
 			}

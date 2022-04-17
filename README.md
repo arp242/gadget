@@ -15,9 +15,9 @@ fmt.Println(ua.OSVersion)      // "10"
 
 // Helper to shorten the UA string while remaining readable:
 uaHeader := `Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4029.0 Safari/537.36`
-short := gadget.Shorten(uaHeader)
+short := gadget.ShortenUA(uaHeader)
 fmt.Println(short)                               // ~Z (~W NT 10.0; Win64; x64) ~a537.36 ~G ~c81.0.4029.0 ~s537.36
-fmt.Println(gadget.Unshorten(short) == uaHeader) // true
+fmt.Println(gadget.UnshortenUA(short) == uaHeader) // true
 ```
 
 Some design principles:
@@ -53,7 +53,7 @@ Opera or Chrome, but just want to know which browser engines your customers are
 using and you need to support.
 
 [isbot]: https://github.com/arp242/isbot
-[gc]: https://github.com/zgoat/goatcounter
+[gc]: https://github.com/arp242/goatcounter
 
 ---
 
@@ -69,7 +69,7 @@ Getting it right 99.999995% of the time is good enough for me :-) It's not like
 the User-Agent is reliable anyway (Ever heard of "Chrome 66.6" or "Chrome
 999999"?), so this is fine.
 
-Simple comparison benchmark (from [`testlib.gox`](/testlib.gox)):
+Simple comparison benchmark:
 
     Library     Total (577×10)  Per op
     gadget      0.0164s         2.846µs
