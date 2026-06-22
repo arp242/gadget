@@ -1,3 +1,4 @@
+// Package gadget gets the browser and OS from the User-Agent header.
 package gadget
 
 import "net/http"

@@ -3,7 +3,6 @@ package gadget
 import (
 	"bufio"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"strings"
 	"testing"
@@ -20,7 +19,7 @@ import (
 //
 // The test name is <filename>/<line number>.
 func TestParseUA(t *testing.T) {
-	files, err := ioutil.ReadDir("./testdata")
+	files, err := os.ReadDir("./testdata")
 	if err != nil {
 		t.Fatal(err)
 	}
